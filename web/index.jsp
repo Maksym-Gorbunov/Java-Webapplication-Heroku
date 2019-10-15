@@ -11,7 +11,6 @@
     <%-- Mine --%>
     <link rel=icon href="img/favicon.ico">
     <link rel="stylesheet" href="css/style.css"/>
-    <script src="js/script.js"></script>
 </head>
 
 <body>
@@ -37,5 +36,6 @@
 </ul>
 
 <img src="${pageContext.request.contextPath}/img/5.jpg" alt="img" height="400" width="400">
+<script src="js/script.js"></script>
 </body>
 </html>
