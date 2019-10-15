@@ -17,6 +17,7 @@
 
 </head>
 <body>
+    <jsp:include page="components/header.jsp" />
     <h1>55555</h1>
     <img src="${pageContext.request.contextPath}/img/5.jpg" alt="img" height="400" width="400">
 </body>
