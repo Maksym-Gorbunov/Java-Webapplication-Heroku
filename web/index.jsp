@@ -3,14 +3,15 @@
 <head>
     <title>mg-webbaplication</title>
     <meta name=viewport content="width=device-width,initial-scale=1">
-    <link rel=icon href=${pageContext.request.contextPath}/img/favicon.ico>
+    <base href="${pageContext.request.contextPath}/">
     <%-- Bootstrap & jQuery --%>
-    <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="js/bootstrap.min.js"></script>
     <%-- Mine --%>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
-    <script src="${pageContext.request.contextPath}/js/script.js"></script>
+    <link rel=icon href="img/favicon.ico">
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
