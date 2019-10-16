@@ -5,11 +5,11 @@
          version="4.0">
 
     <!--<servlet>-->
-        <!--<servlet-name>AddServlet<servlet-name/>-->
-        <!--<servlet-class>servlet.AddServlet</servlet-class>-->
+        <!--<servlet-name>Page1<servlet-name/>-->
+        <!--<servlet-class>servlet.Page1vlet-class>-->
     <!--</servlet>-->
     <!--<servlet-mapping>-->
-        <!--<servlet-name>AddServlet</servlet-name>-->
+        <!--<servlet-name>Page1</servlet-name>-->
         <!--<url-pattern>pages/page1.jsp</url-pattern>-->
     <!--</servlet-mapping>-->
 

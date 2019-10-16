@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<jsp:include page="../components/header.jsp"/>
+<jsp:include page="../../components/header.jsp"/>
 <h1>page1</h1>
 
 <%--java code in jsp--%>
@@ -26,7 +26,7 @@ srciptlit
 
 --%>
 
-<img src="${pageContext.request.contextPath}/img/5.jpg" alt="img" height="400" width="400">
+<img src="img/5.jpg" alt="img" height="400" width="400">
 <p>The data from servlet: ${data}</p>
 </body>
 </html>
