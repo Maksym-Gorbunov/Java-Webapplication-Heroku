@@ -18,7 +18,7 @@
 <jsp:include page="../components/header.jsp"/>
 <h1>page1</h1>
 
-
+<%--java code in jsp--%>
 <%--
 <%
 srciptlit
