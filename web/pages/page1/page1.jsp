@@ -28,5 +28,6 @@ srciptlit
 
 <img src="img/5.jpg" alt="img" height="400" width="400">
 <p>The data from servlet: ${data}</p>
+<p>The data from servlet: ${total}</p>
 </body>
 </html>
