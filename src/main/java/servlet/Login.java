@@ -1,5 +1,9 @@
 package servlet;
 
+import controller.Logic;
+import model.beans.User;
+import model.db.sqlite.DBHelper;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,35 +11,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
 
-  public static boolean loggedIn = false;
-
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String username = request.getParameter("username");
+    String login = request.getParameter("username");
     String password = request.getParameter("pass");
-    System.out.println(username);
-    if ((username != null && !username.equals("")) && (password != null && !password.equals(""))) {
-      PrintWriter pw = response.getWriter();
-      pw.println("User: " + username);
-      pw.println("Password: " + password);
-      if(username.equals("admin")){
-        //response.sendRedirect("../../pages/page1");
+    if ((login != null && !login.equals("")) && (password != null && !password.equals(""))) {
+      User user = new User(login, password);
+      if (Logic.userExist(user)) {
+        Logic.loggedIn = true;
+        request.setAttribute("user", login);
         request.getRequestDispatcher("/pages/page1/page1.jsp").forward(request, response);
+      } else {
+        String message = "Login or password invalid! Try again.";
+        request.setAttribute("message", message);
+        request.setAttribute("users", Logic.users);
+        request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
       }
     } else {
-      PrintWriter pw = response.getWriter();
-      pw.println("Error");
+      String message = "Back-end error, sqlite return NULL";
+      request.setAttribute("message", message);
+      request.setAttribute("users", Logic.users);
+      request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     }
-
-
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    Object data = "login status";
-    request.setAttribute("data", data);
+    request.setAttribute("users", Logic.users);
     request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
   }
 }

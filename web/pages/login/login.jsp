@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>mg-webbaplication</title>
@@ -13,6 +14,7 @@
     <%--<link rel="stylesheet" href="css/style.css"/>--%>
     <%--Login--%>
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -26,11 +28,36 @@
 </head>
 
 <body>
+
+<div class="usersTable">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>USER</th>
+            <th>PASSWORD</th>
+        </tr>
+        </thead>
+        <tbody class="table-striped">
+        <c:forEach items="${users}" var="user">
+            <tr>
+                <td>${user.login}</td>
+                <td>${user.password}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
+
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" method="post">
-					<span class="login100-form-title p-b-34">
+            <form class="login100-form validate-form" action="${pageContext.request.contextPath}/login" method="post">
+
+                <c:if test="${not empty message}">
+                    <p style="color: red">${message}</p><p></p>
+                </c:if>
+
+                <span class="login100-form-title p-b-34">
 						Account Login
 					</span>
 

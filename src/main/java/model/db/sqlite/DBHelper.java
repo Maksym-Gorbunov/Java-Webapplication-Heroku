@@ -11,40 +11,34 @@ id          login       password
 
 import model.beans.User;
 
-import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper {
 
+  private String dbPath;
+  private String url;
 
-  public DBHelper(){
+  public DBHelper() {
     if (!DriverManager.getDrivers().hasMoreElements()) {
       try {
         Class.forName("org.sqlite.JDBC").newInstance();
-      } catch (InstantiationException e) {
-        e.printStackTrace();
-      } catch (IllegalAccessException e) {
-        e.printStackTrace();
-      } catch (ClassNotFoundException e) {
+      } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
         e.printStackTrace();
       }
     }
+    //String dbPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + "cars.db";
+    //String dbPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + "users.db";
+    //String dbPath = System.getProperty("user.dir")+ File.separator + "web" + File.separator + "data" + File.separator + "users.db";
+    dbPath = "C:\\java\\mg-webapplication\\out\\artifacts\\mg_webapplication_Web_exploded\\data\\users.db";
+    url = "jdbc:sqlite:" + dbPath;
+
   }
 
   public Connection connect() {
-    String projectUrl = "http://localhost:8088/mg_webapplication_Web_exploded";
-//    String dbPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + "cars.db";
-//    String dbPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + "users.db";
-    //String dbPath = System.getProperty("user.dir")+ File.separator + "web" + File.separator + "data" + File.separator + "users.db";
-    String dbPath = "C:\\java\\mg-webapplication\\out\\artifacts\\mg_webapplication_Web_exploded\\data\\users.db";
-    String url = "jdbc:sqlite:" + dbPath;
-    System.out.println(">>>   "+url);
-    System.out.println(">>>   "+url);
     Connection conn = null;
     try {
-
       conn = DriverManager.getConnection(url);
     } catch (SQLException e) {
       System.out.println(e.getMessage());
@@ -53,17 +47,13 @@ public class DBHelper {
   }
 
 
-
-
-
-  public List<User> getAll(){
-    //String sql = "SELECT login, password FROM users";
+  public List<User> getAllUsers() {
     String sql = "SELECT login, password FROM users";
     List<User> users = new ArrayList<>();
     try (
             Connection conn = this.connect();
-         Statement stmt  = conn.createStatement();
-         ResultSet rs    = stmt.executeQuery(sql)){
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
       while (rs.next()) {
         User user = new User(rs.getString("login"),
                 rs.getString("password"));
@@ -77,7 +67,6 @@ public class DBHelper {
   }
 
 
-  /*
   public void add(String login, String password) {
     String sql = "INSERT INTO users(login, password) VALUES(?,?)";
     try (Connection connection = this.connect();
@@ -105,10 +94,10 @@ public class DBHelper {
     }
   }
 
-  public void delete(String login, String password){
+  public void delete(String login, String password) {
     String sql = "DELETE FROM users WHERE login=? AND password=?";
     try (Connection connection = this.connect();
-         PreparedStatement pstmt = connection.prepareStatement(sql)){
+         PreparedStatement pstmt = connection.prepareStatement(sql)) {
       pstmt.setString(1, login);
       pstmt.setString(2, password);
       pstmt.executeUpdate();
@@ -116,5 +105,22 @@ public class DBHelper {
       e.printStackTrace();
     }
   }
-  */
+
+  public boolean exist(User user) {
+    String sql = "SELECT login, password FROM users WHERE login=? AND password=?";
+    List<User> users = new ArrayList<>();
+    try (
+            Connection connection = this.connect();
+            PreparedStatement pstmt = connection.prepareStatement(sql)) {
+      pstmt.setString(1, user.getLogin());
+      pstmt.setString(2, user.getPassword());
+      ResultSet rs = pstmt.executeQuery();
+      if (rs.next()) {
+        return true;
+      }
+    } catch (SQLException e) {
+      System.out.println("-->" + e.getMessage());
+    }
+    return false;
+  }
 }

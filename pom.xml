@@ -34,7 +34,12 @@
             <version>3.8.9</version>
         </dependency>
 
-
+        <!-- for easy syntax in jsp -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
 
     <!--<build>-->
