@@ -9,6 +9,7 @@ public class Logic {
   public static boolean loggedIn;
   public static DBHelper dbHelper;
   public static List<User> users;
+  public static User user;
 
   static {
     loggedIn = false;

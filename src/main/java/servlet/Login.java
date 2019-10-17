@@ -17,25 +17,31 @@ import java.util.List;
 public class Login extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String login = request.getParameter("username");
-    String password = request.getParameter("pass");
-    if ((login != null && !login.equals("")) && (password != null && !password.equals(""))) {
-      User user = new User(login, password);
-      if (Logic.userExist(user)) {
-        Logic.loggedIn = true;
-        request.setAttribute("user", login);
-        request.getRequestDispatcher("/pages/page1/page1.jsp").forward(request, response);
+    if (Logic.loggedIn && Logic.user != null) {
+      request.setAttribute("user", Logic.user);
+      request.getRequestDispatcher("/index.jsp").forward(request, response);
+    } else {
+      String login = request.getParameter("username");
+      String password = request.getParameter("pass");
+      if ((login != null && !login.equals("")) && (password != null && !password.equals(""))) {
+        User user = new User(login, password);
+        if (Logic.userExist(user)) {
+          Logic.loggedIn = true;
+          Logic.user = user;
+          request.setAttribute("user", user.getLogin());
+          request.getRequestDispatcher("/pages/page1/page1.jsp").forward(request, response);
+        } else {
+          String message = "Login or password invalid! Try again.";
+          request.setAttribute("message", message);
+          request.setAttribute("users", Logic.users);
+          request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
+        }
       } else {
-        String message = "Login or password invalid! Try again.";
+        String message = "Back-end error, sqlite return NULL";
         request.setAttribute("message", message);
         request.setAttribute("users", Logic.users);
         request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
       }
-    } else {
-      String message = "Back-end error, sqlite return NULL";
-      request.setAttribute("message", message);
-      request.setAttribute("users", Logic.users);
-      request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     }
   }
 

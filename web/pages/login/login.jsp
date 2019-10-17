@@ -54,7 +54,7 @@
             <form class="login100-form validate-form" action="${pageContext.request.contextPath}/login" method="post">
 
                 <c:if test="${not empty message}">
-                    <p style="color: red">${message}</p><p></p>
+                    <p style="color: red; padding-bottom: 2em;">${message}</p>
                 </c:if>
 
                 <span class="login100-form-title p-b-34">

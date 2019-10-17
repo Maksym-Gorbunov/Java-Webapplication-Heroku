@@ -18,6 +18,7 @@
 <body>
 <jsp:include page="components/header.jsp"/>
 <h1>INDEX</h1>
+<p>Welcome ${user}</p>
 
 
 

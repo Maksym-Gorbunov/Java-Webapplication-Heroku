@@ -23,6 +23,7 @@ public class Servlet extends HttpServlet {
       request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
       //response.sendRedirect("index.");
     } else {
+      request.setAttribute("user", Logic.user.getLogin());
       request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
   }
