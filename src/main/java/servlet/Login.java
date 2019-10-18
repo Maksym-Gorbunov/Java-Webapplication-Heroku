@@ -17,10 +17,7 @@ import java.util.List;
 public class Login extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (Logic.loggedIn && Logic.user != null) {
-      request.setAttribute("user", Logic.user);
-      request.getRequestDispatcher("/index.jsp").forward(request, response);
-    } else {
+    if (!Logic.loggedIn) {
       String login = request.getParameter("username");
       String password = request.getParameter("pass");
       if ((login != null && !login.equals("")) && (password != null && !password.equals(""))) {
@@ -42,11 +39,20 @@ public class Login extends HttpServlet {
         request.setAttribute("users", Logic.users);
         request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
       }
+    } else {
+      request.setAttribute("user", Logic.user);
+      request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.setAttribute("users", Logic.users);
-    request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
+    if (!Logic.loggedIn) {
+      request.setAttribute("users", Logic.users);
+      request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
+    } else {
+      request.setAttribute("user", Logic.user.getLogin());
+      request.setAttribute("users", Logic.users);
+      request.getRequestDispatcher("/index.jsp").forward(request, response);
+    }
   }
 }

@@ -13,18 +13,16 @@ import java.io.IOException;
 public class Servlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    Logic logic = new Logic();
-    if(Logic.loggedIn == false){
+    if(!Logic.loggedIn){
       request.setAttribute("users", Logic.users);
       request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
-      //response.sendRedirect("index.");
     } else {
       request.setAttribute("user", Logic.user.getLogin());
       request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
+    //response.sendRedirect("index.");
   }
 }
