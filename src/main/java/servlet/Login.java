@@ -21,12 +21,11 @@ public class Login extends HttpServlet {
       String login = request.getParameter("username");
       String password = request.getParameter("pass");
       if ((login != null && !login.equals("")) && (password != null && !password.equals(""))) {
-        User user = new User(login, password);
-        if (Logic.userExist(user)) {
+        User user = Logic.userExist(login, password);
+        if (user != null) {
           Logic.loggedIn = true;
           Logic.user = user;
-          request.setAttribute("user", user.getLogin());
-          request.getRequestDispatcher("/pages/page1/page1.jsp").forward(request, response);
+          response.sendRedirect("pages/page1");
         } else {
           String message = "Login or password invalid! Try again.";
           request.setAttribute("message", message);

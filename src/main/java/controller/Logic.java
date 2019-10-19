@@ -17,7 +17,7 @@ public class Logic {
     users = dbHelper.getAllUsers();
   }
 
-  public static boolean userExist(User user) {
-    return dbHelper.exist(user);
+  public static User userExist(String login, String password) {
+    return dbHelper.exist(login, password);
   }
 }

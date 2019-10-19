@@ -27,9 +27,8 @@ public class Page1 extends HttpServlet {
       request.setAttribute("users", Logic.users);
       request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
-      Object data = "data for page1";
-      request.setAttribute("data", data);
-      request.setAttribute("user", Logic.user.getLogin());
+      request.setAttribute("user", Logic.user);
+      request.setAttribute("users", Logic.users);
       request.getRequestDispatcher("/pages/page1/page1.jsp").forward(request, response);
     }
   }

@@ -44,11 +44,11 @@
 					</span>
 
                 <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-                    <input id="first-name" class="input100" type="text" name="username" autocomplete="off" placeholder="User name">
+                    <input id="first-name" class="input100" type="text" name="username" autocomplete="off" value="" placeholder="User name">
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-                    <input class="input100" type="password" name="pass" autocomplete="off" placeholder="Password">
+                    <input class="input100" type="password" name="pass" autocomplete="off" value="" placeholder="Password">
                     <span class="focus-input100"></span>
                 </div>
 

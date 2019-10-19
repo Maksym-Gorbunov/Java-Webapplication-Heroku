@@ -48,14 +48,15 @@ public class DBHelper {
 
 
   public List<User> getAllUsers() {
-    String sql = "SELECT login, password FROM users";
+    String sql = "SELECT id, login, password FROM users";
     List<User> users = new ArrayList<>();
     try (
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
       while (rs.next()) {
-        User user = new User(rs.getString("login"),
+        User user = new User(rs.getString("id"),
+                rs.getString("login"),
                 rs.getString("password"));
         users.add(user);
       }
@@ -106,21 +107,24 @@ public class DBHelper {
     }
   }
 
-  public boolean exist(User user) {
-    String sql = "SELECT login, password FROM users WHERE login=? AND password=?";
+  public User exist(String login, String password) {
+    String sql = "SELECT id, login, password FROM users WHERE login=? AND password=?";
     List<User> users = new ArrayList<>();
     try (
             Connection connection = this.connect();
             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-      pstmt.setString(1, user.getLogin());
-      pstmt.setString(2, user.getPassword());
+      pstmt.setString(1, login);
+      pstmt.setString(2, password);
       ResultSet rs = pstmt.executeQuery();
       if (rs.next()) {
-        return true;
+        User user = new User(rs.getString("id"),
+                rs.getString("login"),
+                rs.getString("password"));
+        return user;
       }
     } catch (SQLException e) {
       System.out.println("-->" + e.getMessage());
     }
-    return false;
+    return null;
   }
 }
