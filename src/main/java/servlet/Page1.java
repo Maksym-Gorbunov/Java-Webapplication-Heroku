@@ -24,8 +24,9 @@ public class Page1 extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (!Logic.loggedIn) {
-      request.setAttribute("users", Logic.users);
-      request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
+      response.sendRedirect("login");
+//      request.setAttribute("users", Logic.users);
+//      request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
       request.setAttribute("user", Logic.user);
       request.setAttribute("users", Logic.users);

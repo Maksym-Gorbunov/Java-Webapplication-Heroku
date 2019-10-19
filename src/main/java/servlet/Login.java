@@ -11,10 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
+
+  private List<User> data = new ArrayList<>();
+
+  public Login(){
+    data.add(Logic.users.get(0));
+    data.add(Logic.users.get(1));
+    data.add(Logic.users.get(2));
+  }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (!Logic.loggedIn) {
@@ -29,24 +38,25 @@ public class Login extends HttpServlet {
         } else {
           String message = "Login or password invalid! Try again.";
           request.setAttribute("message", message);
-          request.setAttribute("users", Logic.users);
+          request.setAttribute("data", data);
           request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
         }
       } else {
         String message = "Back-end error, sqlite return NULL";
         request.setAttribute("message", message);
-        request.setAttribute("users", Logic.users);
+        request.setAttribute("data", data);
         request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
       }
     } else {
-      request.setAttribute("user", Logic.user);
-      request.getRequestDispatcher("/index.jsp").forward(request, response);
+//      request.setAttribute("user", Logic.user);
+//      request.getRequestDispatcher("/index.jsp").forward(request, response);
+      response.sendRedirect("login");
     }
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     if (!Logic.loggedIn) {
-      request.setAttribute("users", Logic.users);
+      request.setAttribute("data", data);
       request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
       request.setAttribute("user", Logic.user.getLogin());

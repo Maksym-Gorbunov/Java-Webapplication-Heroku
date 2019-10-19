@@ -16,7 +16,8 @@ public class SignOut extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     Logic.loggedIn = false;
     Logic.user = null;
-    request.setAttribute("users", Logic.users);
-    request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
+    response.sendRedirect("login");
+//    request.setAttribute("users", Logic.users);
+//    request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
   }
 }

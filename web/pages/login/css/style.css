@@ -1,9 +1,12 @@
 .usersTable{
-    margin: 3em auto 0 auto;
-    /*position: absolute;*/
-    background-color: yellow;
-    min-width: 300px;
-    min-height: 20px;
-    border: 2px solid blue;
-    z-index: 100;
+     margin: 3em auto 0 auto;
+     /*position: absolute;*/
+     background-color: yellow;
+     min-width: 250px;
+     min-height: 20px;
+     border: 2px solid blue;
+     z-index: 100;
+ }
+.usersTable thead tr{
+    border-bottom: 2px solid blue;
 }

@@ -73,11 +73,12 @@
                         </tr>
                         </thead>
                         <tbody class="table-striped">
-                        <c:forEach items="${users}" var="user">
+                        <c:forEach items="${data}" var="user">
                             <tr>
                                 <td>${user.login}</td>
                                 <td>${user.password}</td>
                             </tr>
+                            <tr> ...    </tr>
                         </c:forEach>
                         </tbody>
                     </table>
