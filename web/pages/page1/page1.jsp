@@ -32,8 +32,10 @@ srciptlit
 <%--<img src="img/5.jpg" alt="img" height="400" width="400">--%>
 
 <p>Total: ${users.size()}</p>
+
 <div class="usersTable">
     <table class="table table-condensed">
+
         <thead>
         <tr>
             <th>Id</th>
@@ -42,29 +44,53 @@ srciptlit
             <th>Actions</th>
         </tr>
         </thead>
+
         <tbody class="table-striped">
         <c:forEach items="${users}" var="u">
             <tr>
                 <td>${u.id}</td>
                 <td>${u.login}</td>
                 <td>
+                        <%--if Admin--%>
                     <c:if test="${user.login=='admin'}">
                         ${u.password}
                     </c:if>
+
+                        <%--if User--%>
                     <c:if test="${user.login!='admin'}">
                         <c:if test="${u.login==user.login}">
                             ${u.password}
                         </c:if>
-
                     </c:if>
 
                 </td>
-                <td>btn</td>
+                <td>
+                        <%--if Admin--%>
+                    <c:if test="${user.login=='admin'}">
+                        <button type="button" class="btn btn-sm btn-info">Edit</button>
+                        <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                    </c:if>
+
+                        <%--if User--%>
+                    <c:if test="${user.login!='admin'}">
+                        <c:if test="${user.login!=u.login}">
+                            <button type="button" class="btn btn-sm btn-info" disabled>Info</button>
+                            <button type="button" class="btn btn-sm btn-danger" disabled>Danger</button>
+                        </c:if>
+                        <c:if test="${user.login==u.login}">
+                            <button type="button" class="btn btn-sm btn-info">Info</button>
+                            <button type="button" class="btn btn-sm btn-danger" disabled>Danger</button>
+                        </c:if>
+                    </c:if>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 
+    <p>
+        <button type="button" class="btn btn-success">Add new user</button>
+    </p>
 </div>
 
 
