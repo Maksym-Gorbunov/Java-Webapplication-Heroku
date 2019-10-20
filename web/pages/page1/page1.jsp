@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/script.js"></script>
     <link rel="stylesheet" href="pages/page1/style.css"/>
+
 </head>
 
 <body>
@@ -34,7 +35,7 @@ srciptlit
 <p>Total: ${users.size()}</p>
 
 <div class="usersTable">
-    <table class="table table-condensed">
+    <table class="table table-condensed" id="usersTable">
 
         <thead>
         <tr>
@@ -47,7 +48,7 @@ srciptlit
 
         <tbody class="table-striped">
         <c:forEach items="${users}" var="u">
-            <tr>
+            <tr id="row_'${u.id}'">
                 <td>${u.id}</td>
                 <td>${u.login}</td>
                 <td>
@@ -67,8 +68,8 @@ srciptlit
                 <td>
                         <%--if Admin--%>
                     <c:if test="${user.login=='admin'}">
-                        <button type="button" class="btn btn-sm btn-info">Edit</button>
-                        <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                        <button type="button" class="btn btn-sm btn-info editBtn">Edit</button>
+                        <button type="button" class="btn btn-sm btn-danger deleteBtn">Delete</button>
                     </c:if>
 
                         <%--if User--%>
@@ -93,6 +94,6 @@ srciptlit
     </p>
 </div>
 
-
+<script src="pages/page1/script.js"></script>
 </body>
 </html>
