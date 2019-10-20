@@ -16,13 +16,15 @@
 </head>
 
 <body>
+
 <jsp:include page="components/header.jsp"/>
-<h1>INDEX</h1>
-<p>Welcome ${user}</p>
 
+<div>
+    <h1>INDEX</h1>
+    <p>Welcome ${user.login}</p>
+    <img src="${pageContext.request.contextPath}/img/5.jpg" alt="img" height="400" width="400">
+</div>
 
-
-<img src="${pageContext.request.contextPath}/img/5.jpg" alt="img" height="400" width="400">
 <script src="js/script.js"></script>
 </body>
 </html>

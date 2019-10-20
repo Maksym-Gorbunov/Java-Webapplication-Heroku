@@ -28,7 +28,7 @@ public class Home extends HttpServlet {
     Logic.user = Logic.dbHelper.getAllUsers().get(2);
     Logic.loggedIn = true;
     //response.sendRedirect("pages/page1");
-    request.setAttribute("user", Logic.user.getLogin());
+    request.setAttribute("user", Logic.user);
     request.getRequestDispatcher("/index.jsp").forward(request, response);
 
 
