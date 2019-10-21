@@ -1,11 +1,9 @@
-package controller;
-
 import model.beans.User;
 import model.db.sqlite.DBHelper;
 
 import java.util.List;
 
-public class Logic {
+public class FakeModel {
   public static boolean loggedIn;
   public static DBHelper dbHelper;
   public static List<User> users;
@@ -19,5 +17,9 @@ public class Logic {
 
   public static User userExist(String login, String password) {
     return dbHelper.exist(login, password);
+  }
+
+  public static void addUser(){
+
   }
 }

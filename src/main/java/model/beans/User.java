@@ -28,6 +28,18 @@ public class User {
     return password;
   }
 
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public void setLogin(String login) {
+    this.login = login;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
