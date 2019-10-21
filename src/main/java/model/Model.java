@@ -39,7 +39,8 @@ public class Model implements IModel{
     dbHelper.update(oldUser.getLogin(), oldUser.getPassword(), newUser.getLogin(), newUser.getPassword());
     for(User u: users){
       if(u.getLogin()==oldUser.getLogin() && u.getPassword()==oldUser.getPassword()){
-        u.set
+        u.setLogin(newUser.getLogin());
+        u.setPassword(newUser.getPassword());
       }
     }
   }

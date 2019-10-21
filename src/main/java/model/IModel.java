@@ -8,6 +8,7 @@ public interface IModel {
   public static User userExist(String login, String password){
     return null;
   };
-
   public static void addUser(){}
+  public static void deleteUser(){}
+  public static void editUser(){}
 }

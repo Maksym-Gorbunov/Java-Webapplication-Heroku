@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBHelper {
+public class DBHelper implements IDB{
 
   private String dbPath;
   private String url;
