@@ -25,7 +25,7 @@
 <div class="carsTable">
 
     <%-- EDIT NEW CAR --%>
-    <h4>EDIT CAR</h4>
+    <%--<h4>EDIT CAR</h4>
     <form class="form-inline" action="${pageContext.request.contextPath}/cars" method="post">
         <input type="hidden" name="_method" value="PUT"/>
         <div class="form-group">
@@ -45,10 +45,10 @@
             <button type="submit" class="btn btn-success">Add</button>
         </div>
     </form>
-    <p></p>
+    <p></p>--%>
 
 
-<%-- ADD NEW CAR --%>
+    <%-- ADD NEW CAR --%>
     <h4>ADD NEW CAR</h4>
     <form class="form-inline" action="${pageContext.request.contextPath}/cars" method="post">
         <div class="form-group">
@@ -76,6 +76,7 @@
 
         <thead>
         <tr>
+            <th>N</th>
             <th>Make</th>
             <th>Color</th>
             <th>Licensenumber</th>
@@ -85,8 +86,9 @@
 
         <tbody class="table-striped">
         <c:forEach items="${cars}" var="car">
-            <%--<tr id="row_'${u.id}'">--%>
+            <%--<tr id="row_'${car.id}'">--%>
             <tr>
+                <td>-</td>
                 <td>${car.make}</td>
                 <td>${car.color}</td>
                 <td>${car.licensenumber}</td>
@@ -102,5 +104,6 @@
 
 </div>
 
+<script src="pages/cars/script.js"></script>
 </body>
 </html>
