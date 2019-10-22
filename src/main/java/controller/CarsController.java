@@ -19,19 +19,23 @@ public class CarsController extends HttpServlet {
 
   private CarsModel model = new CarsModel();
 
+  // POST
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String make = request.getParameter("make");
     String color = request.getParameter("color");
+    String licensenumber = request.getParameter("licensenumber");
 
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
-    out.println("cars POST "+ color);
+    out.println("cars POST " + make + color + licensenumber);
 
   }
 
+  // GET
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     List<Car> cars = model.getAllCars();
     request.setAttribute("cars", cars);
-    request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request,response);
+    request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);
   }
 
 }
