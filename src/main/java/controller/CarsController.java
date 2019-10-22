@@ -22,10 +22,11 @@ public class CarsController extends HttpServlet {
   // DELETE
   @Override
   protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    System.out.println("2222Delete");
     System.out.println("Delete");
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
-    out.println("cars Delete");
+    out.println("cars Delete "+ request.getParameter("name"));
   }
 
   // UPDATE
@@ -40,16 +41,20 @@ public class CarsController extends HttpServlet {
   // POST
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String name = request.getParameter("name");
     String method = request.getParameter("_method");
-    System.out.println(method+" -------------");
+    System.out.println(method+" -------------"+name);
     switch (method) {
       case "PUT":
+        System.out.println("111");
         doPut(request, response);
         break;
       case "DELETE":
+        System.out.println("2222");
         doDelete(request, response);
         break;
       default:
+        System.out.println("3333");
         String make = request.getParameter("make");
         String color = request.getParameter("color");
         String licensenumber = request.getParameter("licensenumber");
