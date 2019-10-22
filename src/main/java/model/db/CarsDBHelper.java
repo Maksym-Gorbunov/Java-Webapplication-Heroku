@@ -7,7 +7,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// TABLE cars (
+// make TEXT,
+// color TEXT,
+// licensenumber TEXT PRIMARY KEY);
+
 public class CarsDBHelper implements CarDBInterface {
+
   private Connection connect() {
 //    String path = System.getProperty("user.dir") + File.separator + "data" + File.separator + "cars.db";
     String path = "C:\\java\\mg-webapplication\\out\\artifacts\\mg_webapplication_Web_exploded\\data\\cars.db";
@@ -28,9 +34,9 @@ public class CarsDBHelper implements CarDBInterface {
          Statement stmt  = conn.createStatement();
          ResultSet rs    = stmt.executeQuery(sql)){
       while (rs.next()) {
-        Car car = new Car(rs.getString("licensenumber"),
-                rs.getString("make"),
-                rs.getString("color"));
+        Car car = new Car(rs.getString("make"),
+                rs.getString("color"),
+                rs.getString("licensenumber"));
         cars.add(car);
       }
       return cars;

@@ -19,7 +19,7 @@ public class CarsModel {
   }
 
   public void add(Car car){
-    db.insert(car.getLicensenumber(), car.getColor(),car.getMake());
+    db.insert(car.getMake(), car.getColor(),car.getLicensenumber());
   }
 
   public void edit(Car car, Car newCar){

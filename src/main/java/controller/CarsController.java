@@ -24,11 +24,9 @@ public class CarsController extends HttpServlet {
     String make = request.getParameter("make");
     String color = request.getParameter("color");
     String licensenumber = request.getParameter("licensenumber");
-
-    response.setContentType("text/html");
-    PrintWriter out = response.getWriter();
-    out.println("cars POST " + make + color + licensenumber);
-
+    Car car = new Car(make, color, licensenumber);
+    model.add(car);
+    response.sendRedirect("cars");
   }
 
   // GET

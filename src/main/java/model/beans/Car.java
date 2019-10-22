@@ -8,10 +8,10 @@ public class Car implements Serializable {
     private String color;
     public static final long serialVersionUID = 11L;
 
-    public Car(String licensenumber, String make, String color) {
-        this.licensenumber = licensenumber;
+    public Car(String make, String color, String licensenumber) {
         this.make = make;
         this.color = color;
+        this.licensenumber = licensenumber;
     }
 
     @Override
