@@ -22,20 +22,25 @@ public class CarsController extends HttpServlet {
   // DELETE
   @Override
   protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("2222Delete");
-    System.out.println("Delete");
-    response.setContentType("text/html");
-    PrintWriter out = response.getWriter();
-    out.println("cars Delete "+ request.getParameter("name"));
+    String make = request.getParameter("make");
+    String color = request.getParameter("color");
+    String licensenumber = request.getParameter("licensenumber");
+    Car car = new Car(make, color, licensenumber);
+//    System.out.println(car);
+    System.out.println("before " + model.getAllCars().size());
+    model.delete(car);
+    System.out.println("after " + model.getAllCars().size());
+//    response.sendRedirect("cars");
+//    doGet(request, response);
+    List<Car> cars = model.getAllCars();
+    request.setAttribute("cars", cars);
+    request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);
   }
 
   // UPDATE
   @Override
   protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("Update");
-    response.setContentType("text/html");
-    PrintWriter out = response.getWriter();
-    out.println("cars Update" + request.getParameter("make"));
+
   }
 
   // POST
@@ -43,18 +48,14 @@ public class CarsController extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String name = request.getParameter("name");
     String method = request.getParameter("_method");
-    System.out.println(method+" -------------"+name);
     switch (method) {
       case "PUT":
-        System.out.println("111");
         doPut(request, response);
         break;
       case "DELETE":
-        System.out.println("2222");
         doDelete(request, response);
         break;
       default:
-        System.out.println("3333");
         String make = request.getParameter("make");
         String color = request.getParameter("color");
         String licensenumber = request.getParameter("licensenumber");

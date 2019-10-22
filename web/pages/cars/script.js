@@ -1,17 +1,14 @@
-
 var make, color, licensenumber, newMake, newColor, newLicensenumber;
 
-$('.editBtn').click(function() {
+$('.editBtn').click(function () {
     var $this = $(this);
-    var tds = $this.closest('tr').find('td').filter(function() {
+    var tds = $this.closest('tr').find('td').filter(function () {
         return $(this).find('.editBtn').length === 0;
     });
 
     var makeTd = tds.get(1);
     var colorTd = tds.get(2);
     var licensenumberTd = tds.get(3);
-
-
 
 
     if ($this.html() === 'Edit') {
@@ -60,7 +57,7 @@ function sendRequest() {
     console.log("______________________________________________");
 
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             //document.getElementById("demo").innerHTML = this.responseText;
         }
@@ -68,6 +65,16 @@ function sendRequest() {
     // xhttp.open("POST", "demo_post2.asp", true);
     xhttp.open("POST", "cars", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("_method=DELETE&name=Ford");
+    /*var body = `_method=DELETE
+        &make=${make}
+        &color=${color}
+        &licensenumber=${licensenumber}
+        &newMake=${newMake}
+        &newColor=${newColor}
+        &newLicensenumber=${newLicensenumber}`;*/
+    /*var body = `_method=DELETE&make=${make}&color=${color}&licensenumber=${licensenumber}
+    &newMake=${newMake}&newColor=${newColor}&newLicensenumber=${newLicensenumber}`;*/
+    var body = `_method=DELETE&make=${make}&color=${color}&licensenumber=${licensenumber}`;
+    xhttp.send(body);
 
 }

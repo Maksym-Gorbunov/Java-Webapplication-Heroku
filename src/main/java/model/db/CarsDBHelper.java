@@ -77,11 +77,13 @@ public class CarsDBHelper implements CarDBInterface {
   }
 
   public void delete(String licensenumber){
+    System.out.println("db_delete "+licensenumber);
     String sql = "DELETE FROM cars WHERE licensenumber=?";
     try (Connection conn = this.connect();
          PreparedStatement pstmt = conn.prepareStatement(sql)){
       pstmt.setString(1, licensenumber);
       pstmt.executeUpdate();
+      System.out.println("deleted");
     } catch (Exception e) {
       e.printStackTrace();
     }
