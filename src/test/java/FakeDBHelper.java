@@ -8,7 +8,7 @@ id          login       password
 */
 
 import model.beans.User;
-import model.db.sqlite.IDB;
+import model.db.IDB;
 
 import java.sql.*;
 import java.util.ArrayList;

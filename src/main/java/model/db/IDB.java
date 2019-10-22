@@ -1,4 +1,4 @@
-package model.db.sqlite;
+package model.db;
 
 import model.beans.User;
 import java.sql.*;

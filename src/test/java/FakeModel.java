@@ -1,7 +1,6 @@
 import model.IModel;
 import model.beans.User;
-import model.db.sqlite.DBHelper;
-import model.db.sqlite.IDB;
+import model.db.IDB;
 
 import java.util.List;
 

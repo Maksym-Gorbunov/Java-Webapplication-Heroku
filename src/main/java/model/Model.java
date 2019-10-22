@@ -1,19 +1,19 @@
 package model;
 
 import model.beans.User;
-import model.db.sqlite.DBHelper;
+import model.db.UsersDBHelper;
 
 import java.util.List;
 
 public class Model implements IModel{
   public static boolean loggedIn;
-  public static DBHelper dbHelper;
+  public static UsersDBHelper dbHelper;
   public static List<User> users;
   public static User user;
 
   static {
     loggedIn = false;
-    dbHelper = new DBHelper();
+    dbHelper = new UsersDBHelper();
     users = dbHelper.getAllUsers();
   }
 

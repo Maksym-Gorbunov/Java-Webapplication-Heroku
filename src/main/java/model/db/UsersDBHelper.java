@@ -1,4 +1,4 @@
-package model.db.sqlite;
+package model.db;
 
 /*
 id          login       password
@@ -15,12 +15,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBHelper implements IDB{
+public class UsersDBHelper implements IDB {
 
   private String dbPath;
   private String url;
 
-  public DBHelper() {
+  public UsersDBHelper() {
     if (!DriverManager.getDrivers().hasMoreElements()) {
       try {
         Class.forName("org.sqlite.JDBC").newInstance();
