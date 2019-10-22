@@ -24,7 +24,32 @@
 
 <div class="carsTable">
 
-    <%--<form class="form-inline" action="${pageContext.request.contextPath}/login" method="post">--%>
+    <%-- EDIT NEW CAR --%>
+    <h4>EDIT CAR</h4>
+    <form class="form-inline" action="${pageContext.request.contextPath}/cars" method="post">
+        <input type="hidden" name="_method" value="PUT"/>
+        <div class="form-group">
+            <p><label for="makePut">Make</label></p>
+            <input type="text" class="form-control" id="makePut" placeholder="Make" name="make">
+        </div>
+        <div class="form-group">
+            <p><label for="colorPut">Color</label></p>
+            <input type="text" class="form-control" id="colorPut" placeholder="Color" name="color">
+        </div>
+        <div class="form-group">
+            <p><label for="licensenumberPut">Licensenumber</label></p>
+            <input type="text" class="form-control" id="licensenumberPut" placeholder="Licensenumber" name="licensenumber">
+        </div>
+        <div>
+            <p></p>
+            <button type="submit" class="btn btn-success">Add</button>
+        </div>
+    </form>
+    <p></p>
+
+
+<%-- ADD NEW CAR --%>
+    <h4>ADD NEW CAR</h4>
     <form class="form-inline" action="${pageContext.request.contextPath}/cars" method="post">
         <div class="form-group">
             <p><label for="make">Make</label></p>
@@ -42,11 +67,11 @@
             <p></p>
             <button type="submit" class="btn btn-success">Add</button>
         </div>
-
     </form>
-
     <p></p>
 
+
+    <%-- TABLE CARS --%>
     <table class="table table-condensed table-bordered" id="carsTable">
 
         <thead>
