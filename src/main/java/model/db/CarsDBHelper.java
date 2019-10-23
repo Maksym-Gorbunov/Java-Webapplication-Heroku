@@ -1,9 +1,6 @@
 package model.db;
 
 import model.beans.Car;
-import model.beans.User;
-
-import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +26,7 @@ public class CarsDBHelper implements CarDBInterface {
   }
 
   public List<Car> selectAll(){
-    String sql = "SELECT make, color, licensenumber FROM cars";
+    String sql = "SELECT make, color, licensenumber FROM cars ORDER BY licensenumber ASC";
     List<Car> cars = new ArrayList<>();
     try (Connection conn = this.connect();
          Statement stmt  = conn.createStatement();
@@ -40,6 +37,7 @@ public class CarsDBHelper implements CarDBInterface {
                 rs.getString("licensenumber"));
         cars.add(car);
       }
+      System.out.println("db.getAll");
       return cars;
     } catch (SQLException e) {
       System.out.println("-->" + e.getMessage());
@@ -55,6 +53,7 @@ public class CarsDBHelper implements CarDBInterface {
       pstmt.setString(2, color);
       pstmt.setString(3, licensenumber);
       pstmt.executeUpdate();
+      System.out.println("db.add");
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
@@ -62,7 +61,6 @@ public class CarsDBHelper implements CarDBInterface {
 
 
   public void update(String licensenumber, Car car) {
-    System.out.println("1111");
     String sql = "UPDATE cars set make=?, color=? WHERE licensenumber=?";
     try (Connection conn = this.connect();
          PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -82,7 +80,7 @@ public class CarsDBHelper implements CarDBInterface {
          PreparedStatement pstmt = conn.prepareStatement(sql)){
       pstmt.setString(1, licensenumber);
       pstmt.executeUpdate();
-      System.out.println("deleted");
+      System.out.println("db.deleted");
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -99,11 +97,13 @@ public class CarsDBHelper implements CarDBInterface {
         Car car = new Car(rs.getString("make"),
                 rs.getString("color"),
                 rs.getString("licensenumber"));
+        System.out.println("db.exist");
         return car;
       }
     } catch (SQLException e) {
       System.out.println("-->" + e.getMessage());
     }
+    System.out.println("db.notFound");
     return null;
   }
 }

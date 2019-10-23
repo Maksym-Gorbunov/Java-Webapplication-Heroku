@@ -26,8 +26,8 @@ public class CarsModel {
     db.update(licensenumber, newCar);
   }
 
-  public void delete(Car car){
-    db.delete(car.getLicensenumber());
+  public void delete(String licensenumber){
+    db.delete(licensenumber);
   }
 
   public Car exist(String licensenumber){
