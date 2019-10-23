@@ -1,6 +1,7 @@
 package model.db;
 
 import model.beans.Car;
+import model.beans.User;
 
 import java.io.File;
 import java.sql.*;
@@ -60,24 +61,22 @@ public class CarsDBHelper implements CarDBInterface {
   }
 
 
-  public void update(String make, String color, String licensenumber, String new_make, String new_color, String new_licensenumber) {
-    String sql = "UPDATE cars set make=?, color=?, licensenumber=? WHERE make=? AND color=? AND licensenumber=?";
+  public void update(String licensenumber, Car car) {
+    System.out.println("1111");
+    String sql = "UPDATE cars set make=?, color=? WHERE licensenumber=?";
     try (Connection conn = this.connect();
          PreparedStatement pstmt = conn.prepareStatement(sql)) {
-      pstmt.setString(1, new_make);
-      pstmt.setString(2, new_color);
-      pstmt.setString(3, new_licensenumber);
-      pstmt.setString(4, make);
-      pstmt.setString(5, color);
-      pstmt.setString(6, licensenumber);
+      pstmt.setString(1, car.getMake());
+      pstmt.setString(2, car.getColor());
+      pstmt.setString(3, licensenumber);
       pstmt.executeUpdate();
+      System.out.println("db.updated");
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
   }
 
   public void delete(String licensenumber){
-    System.out.println("db_delete "+licensenumber);
     String sql = "DELETE FROM cars WHERE licensenumber=?";
     try (Connection conn = this.connect();
          PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -87,5 +86,24 @@ public class CarsDBHelper implements CarDBInterface {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  public Car exist(String licensenumber) {
+    String sql = "SELECT make, color, licensenumber FROM cars WHERE licensenumber=?";
+    try (
+            Connection connection = this.connect();
+            PreparedStatement pstmt = connection.prepareStatement(sql)) {
+      pstmt.setString(1, licensenumber);
+      ResultSet rs = pstmt.executeQuery();
+      if (rs.next()) {
+        Car car = new Car(rs.getString("make"),
+                rs.getString("color"),
+                rs.getString("licensenumber"));
+        return car;
+      }
+    } catch (SQLException e) {
+      System.out.println("-->" + e.getMessage());
+    }
+    return null;
   }
 }

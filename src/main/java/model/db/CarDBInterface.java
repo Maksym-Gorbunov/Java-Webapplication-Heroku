@@ -11,8 +11,9 @@ public interface CarDBInterface {
 
   public void insert(String make, String color, String licensenumber);
 
-
-  public void update(String make, String color, String licensenumber, String new_make, String new_color, String new_licensenumber);
+  public void update(String licensenumber, Car car);
 
   public void delete(String licensenumber);
+
+  public Car exist(String licensenumber);
 }

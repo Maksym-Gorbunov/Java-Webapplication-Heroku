@@ -22,12 +22,15 @@ public class CarsModel {
     db.insert(car.getMake(), car.getColor(),car.getLicensenumber());
   }
 
-  public void edit(Car car, Car newCar){
-    db.update(car.getMake(),car.getColor(),car.getLicensenumber()
-            ,newCar.getMake(),newCar.getColor(),newCar.getLicensenumber());
+  public void edit(String licensenumber, Car newCar){
+    db.update(licensenumber, newCar);
   }
 
   public void delete(Car car){
     db.delete(car.getLicensenumber());
+  }
+
+  public Car exist(String licensenumber){
+    return db.exist(licensenumber);
   }
 }

@@ -24,40 +24,46 @@ public class CarsController extends HttpServlet {
   // DELETE
   @Override
   protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String make = request.getParameter("make");
-    String color = request.getParameter("color");
-    String licensenumber = request.getParameter("licensenumber");
-    Car car = new Car(make, color, licensenumber);
+//    String make = request.getParameter("make");
+//    String color = request.getParameter("color");
+//    String licensenumber = request.getParameter("licensenumber");
+//    Car car = new Car(make, color, licensenumber);
 //    System.out.println(car);
-    System.out.println("before " + model.getAllCars().size());
-    model.delete(car);
-    System.out.println("after " + model.getAllCars().size());
-//    response.sendRedirect("/");
+//    System.out.println("before " + model.getAllCars().size());
+//    model.delete(car);
+//    System.out.println("after " + model.getAllCars().size());
+////    response.sendRedirect("/");
     System.out.println("--del Servlet--");
-    response.sendRedirect("pages/page1");
-    System.out.println("--del Servlet after--");
-//    doGet(request, response);
-//    List<Car> cars = new ArrayList<>();
-//    cars = model.getAllCars();
-//    cars.clear();
-//    request.setAttribute("cars", cars);
-//
-    //request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);
+//    response.sendRedirect("pages/page1");
+//    System.out.println("--del Servlet after--");
+////    doGet(request, response);
+////    List<Car> cars = new ArrayList<>();
+////    cars = model.getAllCars();
+////    cars.clear();
+////    request.setAttribute("cars", cars);
+////
+//    //request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);
 
   }
 
   // UPDATE
   @Override
   protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    String licensenumber = request.getParameter("licensenumber");
+    String newMake = request.getParameter("newMake");
+    String newColor = request.getParameter("newColor");
+    String newLicensenumber = request.getParameter("newLicensenumber");
+    Car newCar = new Car(newMake, newColor, newLicensenumber);
+    model.edit(licensenumber, newCar);
   }
 
   // POST
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String name = request.getParameter("name");
-    String method = request.getParameter("_method");
-    switch (method) {
+    String _method = request.getParameter("_method");
+    System.out.println("_method: "+ _method);
+    switch (_method) {
       case "PUT":
         doPut(request, response);
         break;

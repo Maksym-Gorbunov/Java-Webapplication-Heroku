@@ -42,9 +42,6 @@ $('.editBtn').click(function () {
         newColor = tds.get(2).innerHTML;
         newLicensenumber = tds.get(3).innerHTML;
 
-        // console.log(make + " " + color + " " + licensenumber);
-        // console.log(newMake + " " + newColor + " " + newLicensenumber);
-        // console.log("______________________________________________");
 
         //toDo send request to server + _method put
         sendRequest();
@@ -52,10 +49,6 @@ $('.editBtn').click(function () {
 });
 
 function sendRequest() {
-    console.log(make + " " + color + " " + licensenumber);
-    console.log(newMake + " " + newColor + " " + newLicensenumber);
-    console.log("______________________________________________");
-
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -65,17 +58,6 @@ function sendRequest() {
     // xhttp.open("POST", "demo_post2.asp", true);
     xhttp.open("POST", "cars", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    /*var body = `_method=DELETE
-        &make=${make}
-        &color=${color}
-        &licensenumber=${licensenumber}
-        &newMake=${newMake}
-        &newColor=${newColor}
-        &newLicensenumber=${newLicensenumber}`;*/
-    /*var body = `_method=DELETE&make=${make}&color=${color}&licensenumber=${licensenumber}
-    &newMake=${newMake}&newColor=${newColor}&newLicensenumber=${newLicensenumber}`;*/
-    var body = `_method=DELETE&make=${make}&color=${color}&licensenumber=${licensenumber}`;
-    xhttp.send(body);
-
-    //window.location.reload(true);
+    var my_body = `_method=PUT&licensenumber=${licensenumber}&newMake=${newMake}&newColor=${newColor}`;
+    xhttp.send(my_body);
 }
