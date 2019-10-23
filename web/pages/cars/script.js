@@ -106,7 +106,7 @@ $('.deleteBtn').click(function () {
 
     for (var i = 0; i < rows.length; i++) {
         var r = rows[i];
-        $(r).find("td:eq(0)").html(i+1);
+        //$(r).find("td:eq(0)").html(i+1);
         // console.log($(r).find("td:eq(1)").text())
     }
 });

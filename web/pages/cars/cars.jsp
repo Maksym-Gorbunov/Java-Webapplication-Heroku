@@ -68,7 +68,7 @@
         <c:forEach items="${cars}" var="car">
             <%--<tr id="row_'${car.id}'">--%>
             <tr>
-                <td>-</td>
+                <td></td>
                 <td>${car.make}</td>
                 <td>${car.color}</td>
                 <td>${car.licensenumber}</td>
@@ -83,6 +83,22 @@
 
 
 </div>
+
+
+<%--table rows counter--%>
+<style>
+    .carsTable {
+        counter-reset: rowNumber-1;
+    }
+    .carsTable tr {
+        counter-increment: rowNumber;
+    }
+    .carsTable tr td:first-child::before {
+        content: counter(rowNumber);
+        min-width: 1em;
+        margin-right: 0.5em;
+    }
+</style>
 
 <script src="pages/cars/script.js"></script>
 </body>
