@@ -1,12 +1,7 @@
 var make, color, licensenumber, newMake, newColor, newLicensenumber;
 var row, makeTd, colorTd, licensenumberTd;
 
-
-var rowsss = $("#carsTable").find('> tbody > tr');
-// console.log(rowsss.length);
-// console.log(rowsss[0]);
-//console.log(rowsss[0].childNodes[0].innerHTML);
-
+var rows = $("#carsTable").find('> tbody > tr');
 
 
 ////////////////////////////////// EDIT //////////////////////////////////
@@ -19,10 +14,7 @@ $('.editBtn').click(function () {
     colorTd = tds.get(2);
     licensenumberTd = tds.get(3);
     row = $this.closest('tr');
-
-    console.log(row.childNodes)
-
-
+    var rowIndex = $('#carsTable tr').index(row);
 
     if ($this.html() === 'Edit') {
         $this.html('Save');
@@ -38,17 +30,16 @@ $('.editBtn').click(function () {
         licensenumber = tds.get(3).innerHTML;
 
 
-
         //toDo disable all except current row
         //toDo blur bage, or opacity ...?
         //toDo disable delete btn and add new btn
 
-        for (var i = 0; i < rowsss.length; i++) {
-            var r = rowsss[i];
-            if(r != row){
+        for (var i = 0; i < rows.length; i++) {
+            var r = rows[i];
+            var index = $('#carsTable tr').index(r);
+            if (index != rowIndex) {
                 r.style.backgroundColor = 'green';
             }
-
         }
 
         // row = $this.closest('tr');
@@ -72,9 +63,12 @@ $('.editBtn').click(function () {
         //toDo send request to server + _method put
         editRequest();
 
-        for (var i = 0; i < rowsss.length; i++) {
-            var r = rowsss[i];
-            r.style.backgroundColor = 'blue';
+        for (var i = 0; i < rows.length; i++) {
+            var r = rows[i];
+            var index = $('#carsTable tr').index(r);
+            if (index != rowIndex) {
+                r.style.backgroundColor = 'transparent';
+            }
         }
     }
 });
@@ -86,7 +80,6 @@ function editRequest() {
             //document.getElementById("demo").innerHTML = this.responseText;
         }
     };
-    // xhttp.open("POST", "demo_post2.asp", true);
     xhttp.open("POST", "cars", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var my_body = `_method=PUT&licensenumber=${licensenumber}&newMake=${newMake}&newColor=${newColor}`;
@@ -99,14 +92,23 @@ function editRequest() {
 $('.deleteBtn').click(function () {
     var $this = $(this);
     var tds = $this.closest('tr').find('td').filter(function () {
-        return $(this).find('.editBtn').length === 0;
+        return $(this).find('.deleteBtn').length === 0;
     });
     licensenumberTd = tds.get(3);
     licensenumber = tds.get(3).innerHTML;
     deleteRequest();
+
     row = $this.closest('tr');
+
+    var total = $("#total").html();
+    var total = $("#total").html(total - 1);
     row.remove();
 
+    for (var i = 0; i < rows.length; i++) {
+        var r = rows[i];
+        $(r).find("td:eq(0)").html(i+1);
+        // console.log($(r).find("td:eq(1)").text())
+    }
 });
 
 function deleteRequest() {
@@ -116,7 +118,6 @@ function deleteRequest() {
             //document.getElementById("demo").innerHTML = this.responseText;
         }
     };
-    // xhttp.open("POST", "demo_post2.asp", true);
     xhttp.open("POST", "cars", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var my_body = `_method=DELETE&licensenumber=${licensenumber}`;

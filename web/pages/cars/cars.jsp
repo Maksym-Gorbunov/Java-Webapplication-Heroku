@@ -22,9 +22,9 @@
 <body>
 <jsp:include page="../../components/header.jsp"/>
 
-<div class="carsTable">
-    <p>total: ${cars.size()}</p>
 
+<div class="carsTable">
+    <p>Total:<span id="total">${cars.size()}</span></p>
 
 
     <%-- ADD NEW CAR --%>
