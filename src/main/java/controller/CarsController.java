@@ -4,6 +4,7 @@ import model.CarsModel;
 import model.beans.Car;
 import model.db.CarDBInterface;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.soap.Addressing;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/cars")
@@ -30,11 +32,18 @@ public class CarsController extends HttpServlet {
     System.out.println("before " + model.getAllCars().size());
     model.delete(car);
     System.out.println("after " + model.getAllCars().size());
-//    response.sendRedirect("cars");
+//    response.sendRedirect("/");
+    System.out.println("--del Servlet--");
+    response.sendRedirect("pages/page1");
+    System.out.println("--del Servlet after--");
 //    doGet(request, response);
-    List<Car> cars = model.getAllCars();
-    request.setAttribute("cars", cars);
-    request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);
+//    List<Car> cars = new ArrayList<>();
+//    cars = model.getAllCars();
+//    cars.clear();
+//    request.setAttribute("cars", cars);
+//
+    //request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);
+
   }
 
   // UPDATE

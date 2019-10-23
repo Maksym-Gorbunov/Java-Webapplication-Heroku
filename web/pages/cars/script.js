@@ -77,4 +77,5 @@ function sendRequest() {
     var body = `_method=DELETE&make=${make}&color=${color}&licensenumber=${licensenumber}`;
     xhttp.send(body);
 
+    //window.location.reload(true);
 }
