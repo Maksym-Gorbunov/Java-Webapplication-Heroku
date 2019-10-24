@@ -45,13 +45,13 @@ public class CarsDBHelper implements CarsDBInterface {
     return null;
   }
 
-  public void insert(String make, String color, String licensenumber) {
+  public void insert(Car car) {
     String sql = "INSERT INTO cars(make, color, licensenumber) VALUES(?,?,?)";
     try (Connection conn = this.connect();
          PreparedStatement pstmt = conn.prepareStatement(sql)) {
-      pstmt.setString(1, make);
-      pstmt.setString(2, color);
-      pstmt.setString(3, licensenumber);
+      pstmt.setString(1, car.getMake());
+      pstmt.setString(2, car.getColor());
+      pstmt.setString(3, car.getLicensenumber());
       pstmt.executeUpdate();
       System.out.println("db.add");
     } catch (SQLException e) {

@@ -9,7 +9,7 @@ import java.util.List;
 public interface CarsDBInterface {
   public List<Car> selectAll();
 
-  public void insert(String make, String color, String licensenumber);
+  public void insert(Car car);
 
   public void update(String licensenumber, Car car);
 

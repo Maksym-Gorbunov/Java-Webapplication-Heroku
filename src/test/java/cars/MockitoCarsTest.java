@@ -44,12 +44,10 @@ public class MockitoCarsTest {
 
   @Test
   public void addTest() {
-    String make = "Saab";
-    String color = "yellow";
-    String licensenumber = "TTT777";
-    doNothing().when(service).insert(make, color, licensenumber);
-    model.add(new Car(make, color, licensenumber));
-    verify(service).insert(make, color, licensenumber);
+    Car car = new Car("Saab", "yellow", "TTT777");
+    doNothing().when(service).insert(car);
+    model.add(car);
+    verify(service).insert(car);
   }
 
   @Test
