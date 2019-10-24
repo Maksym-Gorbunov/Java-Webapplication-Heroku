@@ -5,8 +5,10 @@ import model.beans.Car;
 import model.db.CarsDBHelper;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.mock;
@@ -14,13 +16,13 @@ import static org.mockito.Mockito.mock;
 
 public class MockitoCarsTest {
 
-  CarsDBHelper mockDB = mock(CarsDBHelper.class);
+  CarsDBHelper service = mock(CarsDBHelper.class);
   List<Car> data;
   CarsModel model;
 
   @Before
-  public void init(){
-    model = new CarsModel(mockDB);
+  public void init() {
+    model = new CarsModel(service);
     // Test DATA
     data = new ArrayList<>();
     data.add(new Car("Ford", "green", "AAA111"));
@@ -29,48 +31,56 @@ public class MockitoCarsTest {
     data.add(new Car("Volvo", "white", "DDD444"));
   }
 
+
   @Test
-  public void getAllCarsTest(){
-    when(mockDB.selectAll()).thenReturn(data);
+  public void getAllCarsTest() {
+    when(service.selectAll()).thenReturn(data);
     List<Car> expectedData = new ArrayList<>();
-    expectedData.add(new Car("Ford", "green", "AAA111"));
-    expectedData.add(new Car("Audi", "red", "BBB222"));
-    expectedData.add(new Car("Honda", "blue", "CCC333"));
-    expectedData.add(new Car("Volvo", "white", "DDD444"));
+    expectedData = data;
     List<Car> actual = model.getAllCars();
     assertEquals(expectedData, actual);
-    verify(mockDB).selectAll();
+    verify(service).selectAll();
   }
 
   @Test
-  public void updateTest(){
+  public void addTest() {
+    String make = "Saab";
+    String color = "yellow";
+    String licensenumber = "TTT777";
+    doNothing().when(service).insert(make, color, licensenumber);
+    model.add(new Car(make, color, licensenumber));
+    verify(service).insert(make, color, licensenumber);
+  }
+
+  @Test
+  public void updateTest() {
     String licensenumber = "AAA111";
     Car car = new Car("Audi", "green", "AAA111");
-    doNothing().when(mockDB).update(licensenumber ,car);
-    //doNothing().when(mockDB).update(anyString() ,any(Car.class) );
+    doNothing().when(service).update(licensenumber, car);
+    //doNothing().when(service).update(anyString() ,any(Car.class) );
     model.edit(licensenumber, car);
-    verify(mockDB).update(licensenumber, car);
+    verify(service).update(licensenumber, car);
   }
 
   @Test
-  public void existTest(){
+  public void existTest() {
     String licensenumber = "AAA111";
     String licensenumberWrong = "AAA999";
     Car car = new Car("Audi", "green", "AAA111");
-    when(mockDB.exist(licensenumber)).thenReturn(car);
-    when(mockDB.exist(licensenumberWrong)).thenReturn(null);
+    when(service.exist(licensenumber)).thenReturn(car);
+    when(service.exist(licensenumberWrong)).thenReturn(null);
     Car actual = model.exist(licensenumber);
     Car actualWrong = model.exist(licensenumberWrong);
     assertEquals(car, actual);
     assertEquals(null, actualWrong);
-    verify(mockDB).exist(licensenumber);
+    verify(service).exist(licensenumber);
   }
 
   @Test
-  public void deleteTest(){
+  public void deleteTest() {
     String licensenumber = "AAA111";
-    doNothing().when(mockDB).delete(licensenumber);
+    doNothing().when(service).delete(licensenumber);
     model.delete(licensenumber);
-    verify(mockDB).delete(licensenumber);
+    verify(service).delete(licensenumber);
   }
 }
