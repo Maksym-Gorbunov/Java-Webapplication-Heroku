@@ -15,7 +15,7 @@
     <link rel=icon href="img/favicon.ico">
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/script.js"></script>
-    <link rel="stylesheet" href="pages/page1/style.css"/>
+    <link rel="stylesheet" href="pages/cars/style.css"/>
 
 </head>
 
@@ -29,7 +29,7 @@
 
     <%-- ADD NEW CAR --%>
     <h4>ADD NEW CAR</h4>
-    <form class="form-inline" action="${pageContext.request.contextPath}/cars" method="POST">
+    <form class="form-inline addForm" action="${pageContext.request.contextPath}/cars" method="POST">
         <input type="hidden" name="_method" value="POST"/>
         <div class="form-group">
             <p><label for="make">Make</label></p>
@@ -45,14 +45,14 @@
         </div>
         <div>
             <p></p>
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" class="btn btn-success addBtn">Add</button>
         </div>
     </form>
     <p></p>
 
 
     <%-- TABLE CARS --%>
-    <table class="table table-condensed table-bordered" id="carsTable">
+    <table class="table table-condensed table-bordered carsTable" id="carsTable">
 
         <thead>
         <tr>

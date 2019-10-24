@@ -1,5 +1,5 @@
 var make, color, licensenumber, newMake, newColor, newLicensenumber;
-var row, makeTd, colorTd, licensenumberTd;
+var row, makeTd, colorTd, licensenumberTd, buttons;
 
 var rows = $("#carsTable").find('> tbody > tr');
 
@@ -21,8 +21,8 @@ $('.editBtn').click(function () {
         makeTd.contentEditable = true;
         colorTd.contentEditable = true;
 
-        // makeTd.style.backgroundColor = 'red';
-        // colorTd.style.backgroundColor = 'red';
+        makeTd.style.backgroundColor = 'white';
+        colorTd.style.backgroundColor = 'white';
         // licensenumberTd.style.backgroundColor = 'red';
 
         make = tds.get(1).innerHTML;
@@ -34,14 +34,31 @@ $('.editBtn').click(function () {
         //toDo blur bage, or opacity ...?
         //toDo disable delete btn and add new btn
 
-        for (var i = 0; i < rows.length; i++) {
-            var r = rows[i];
-            var index = $('#carsTable tr').index(r);
-            if (index != rowIndex) {
-                r.style.backgroundColor = 'green';
-            }
-        }
+        $("#carsTable").find("button").attr('disabled', true);
+        $this.attr('disabled', false);
+        //row.closest("button").css('border', "3px solod yellow");
 
+        var op = 0.2;
+        rows.css('opacity', op);
+        row.css('opacity', 1);
+        // row.style.opacity = 1;
+        row.closest("button").css('opacity', op);
+        // $(".addBtn").attr('disabled', true);
+        $("*",".addForm").attr('disabled', true);
+        $(".addForm").css('opacity', op);
+        // for (var i = 0; i < rows.length; i++) {
+        //     var r = rows[i];
+        //     var index = $('#carsTable tr').index(r);
+        //     if (index == rowIndex) {
+        //
+        //         //r.style.backgroundColor = 'green';
+        //
+        //         r.style.opacity = 1;
+        //     } else {
+        //
+        //         r.style.opacity = 0.3;
+        //     }
+        // }
         // row = $this.closest('tr');
         // row.css('background', 'blue');
 
@@ -51,8 +68,8 @@ $('.editBtn').click(function () {
         makeTd.contentEditable = false;
         colorTd.contentEditable = false;
 
-        // makeTd.style.backgroundColor = "transparent";
-        // colorTd.style.backgroundColor = "transparent";
+        makeTd.style.backgroundColor = "transparent";
+        colorTd.style.backgroundColor = "transparent";
         // licensenumberTd.style.backgroundColor = "transparent";
 
         newMake = tds.get(1).innerHTML;
@@ -62,14 +79,24 @@ $('.editBtn').click(function () {
 
         //toDo send request to server + _method put
         editRequest();
+        $("#carsTable").find("button").attr('disabled', false);
+        rows.css('opacity', 1);
+        //$(".addBtn").attr('disabled', false);
+        $("*",".addForm").attr('disabled', false);
+        $(".addForm").css('opacity', 1);
 
-        for (var i = 0; i < rows.length; i++) {
-            var r = rows[i];
-            var index = $('#carsTable tr').index(r);
-            if (index != rowIndex) {
-                r.style.backgroundColor = 'transparent';
-            }
-        }
+
+
+        //row.closest("button").css('border', "3px solod yellow");
+        // for (var i = 0; i < rows.length; i++) {
+        //     var r = rows[i];
+        //     var index = $('#carsTable tr').index(r);
+        //     if (index != rowIndex) {
+        //         // r.style.backgroundColor = 'transparent';
+        //         r.style.opacity = 1;
+        //     }
+        //
+        // }
     }
 });
 
@@ -101,14 +128,8 @@ $('.deleteBtn').click(function () {
     row = $this.closest('tr');
 
     var total = $("#total").html();
-    var total = $("#total").html(total - 1);
+    $("#total").html(total - 1);
     row.remove();
-
-    for (var i = 0; i < rows.length; i++) {
-        var r = rows[i];
-        //$(r).find("td:eq(0)").html(i+1);
-        // console.log($(r).find("td:eq(1)").text())
-    }
 });
 
 function deleteRequest() {
