@@ -1,12 +1,27 @@
-.carsTable{
-    margin: 3em auto 3em auto;
-    /*position: absolute;*/
-    background-color: #cccccc;
-    min-width: 300px;
-    max-width: 70vw;
-    min-height: 20px;
-    border: 2px solid blue;
+/* variables*/
+:root {
+    --borderColor: #919191;
+    --tableBgColor:#e2e2e2;
 }
+
+.main{
+    width: 70vw;
+    margin: 3em auto 3em auto;
+}
+.carsTable,
+.addForm{
+    width: 70vw;
+    background-color: var(--tableBgColor);
+    border: 2px solid var(--borderColor);
+}
+.addForm{
+    padding: 1em;
+}
+.carsTable thead{
+    background-color: #c9c9c9;
+}
+
+
 
 
 

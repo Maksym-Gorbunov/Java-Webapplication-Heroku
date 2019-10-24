@@ -20,35 +20,31 @@
 </head>
 
 <body>
+
 <jsp:include page="../../components/header.jsp"/>
 
+<div class="main">
 
-<div class="carsTable">
     <p>Total:<span id="total">${cars.size()}</span></p>
 
-
     <%-- ADD NEW CAR --%>
-    <h4>ADD NEW CAR</h4>
     <form class="form-inline addForm" action="${pageContext.request.contextPath}/cars" method="POST">
+        <h4>ADD NEW CAR</h4>
         <input type="hidden" name="_method" value="POST"/>
-        <div class="form-group">
-            <p><label for="make">Make</label></p>
+        <div class="form-group addField">
             <input type="text" class="form-control" id="make" placeholder="Make" name="make">
         </div>
-        <div class="form-group">
-            <p><label for="color">Color</label></p>
+        <div class="form-group addField">
             <input type="text" class="form-control" id="color" placeholder="Color" name="color">
         </div>
-        <div class="form-group">
-            <p><label for="licensenumber">Licensenumber</label></p>
+        <div class="form-group addField">
             <input type="text" class="form-control" id="licensenumber" placeholder="Licensenumber" name="licensenumber">
         </div>
-        <div>
-            <p></p>
-            <button type="submit" class="btn btn-success addBtn">Add</button>
+        <div class="form-group addActions">
+            <button type="submit" class="btn btn-success addBtn" disabled="disabled">Add</button>
         </div>
     </form>
-    <p></p>
+
 
 
     <%-- TABLE CARS --%>
@@ -63,7 +59,6 @@
             <th>Actions</th>
         </tr>
         </thead>
-
         <tbody class="table-striped">
         <c:forEach items="${cars}" var="car">
             <%--<tr id="row_'${car.id}'">--%>
@@ -81,18 +76,18 @@
         </tbody>
     </table>
 
-
 </div>
-
 
 <%--table rows counter--%>
 <style>
     .carsTable {
         counter-reset: rowNumber-1;
     }
+
     .carsTable tr {
         counter-increment: rowNumber;
     }
+
     .carsTable tr td:first-child::before {
         content: counter(rowNumber);
         min-width: 1em;
