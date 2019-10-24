@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import model.Model;
+import model.UsersModel;
 import model.beans.User;
 
 import javax.servlet.ServletException;
@@ -18,20 +18,20 @@ public class Login extends HttpServlet {
   private List<User> data = new ArrayList<>();
 
   public Login(){
-    data.add(Model.users.get(0));
-    data.add(Model.users.get(1));
-    data.add(Model.users.get(2));
+    data.add(UsersModel.users.get(0));
+    data.add(UsersModel.users.get(1));
+    data.add(UsersModel.users.get(2));
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (!Model.loggedIn) {
+    if (!UsersModel.loggedIn) {
       String login = request.getParameter("username");
       String password = request.getParameter("pass");
       if ((login != null && !login.equals("")) && (password != null && !password.equals(""))) {
-        User user = Model.userExist(login, password);
+        User user = UsersModel.userExist(login, password);
         if (user != null) {
-          Model.loggedIn = true;
-          Model.user = user;
+          UsersModel.loggedIn = true;
+          UsersModel.user = user;
           response.sendRedirect("pages/page1");
         } else {
           String message = "Login or password invalid! Try again.";
@@ -46,19 +46,19 @@ public class Login extends HttpServlet {
         request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
       }
     } else {
-//      request.setAttribute("user", model.IModel.user);
+//      request.setAttribute("user", model.UsersModelInterface.user);
 //      request.getRequestDispatcher("/index.jsp").forward(request, response);
       response.sendRedirect("login");
     }
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (!Model.loggedIn) {
+    if (!UsersModel.loggedIn) {
       request.setAttribute("data", data);
       request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
-      request.setAttribute("user", Model.user.getLogin());
-      request.setAttribute("users", Model.users);
+      request.setAttribute("user", UsersModel.user.getLogin());
+      request.setAttribute("users", UsersModel.users);
       request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
   }

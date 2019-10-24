@@ -1,4 +1,4 @@
-/*
+package users;/*
 id          login       password
 ----------  ----------  ----------
 1           user1       password1
@@ -8,13 +8,13 @@ id          login       password
 */
 
 import model.beans.User;
-import model.db.IDB;
+import model.db.UserDBInterface;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FakeDBHelper implements IDB{
+public class FakeDBHelper implements UserDBInterface {
 
   private List<User> fakeUsers = new ArrayList<>();
 

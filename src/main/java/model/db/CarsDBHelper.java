@@ -10,7 +10,7 @@ import java.util.List;
 // color TEXT,
 // licensenumber TEXT PRIMARY KEY);
 
-public class CarsDBHelper implements CarDBInterface {
+public class CarsDBHelper implements CarsDBInterface {
 
   private Connection connect() {
 //    String path = System.getProperty("user.dir") + File.separator + "data" + File.separator + "cars.db";

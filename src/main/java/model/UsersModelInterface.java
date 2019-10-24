@@ -1,13 +1,13 @@
 package model;
 
 import model.beans.User;
-import model.db.IDB;
+import model.db.UserDBInterface;
 
 import java.util.List;
 
-public interface IModel {
+public interface UsersModelInterface {
   public static boolean loggedIn = false;
-  public static IDB dbHelper = null;
+  public static UserDBInterface dbHelper = null;
   public static List<User> users = null;
   public static User user = null;
 

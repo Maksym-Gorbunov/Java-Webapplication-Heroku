@@ -1,12 +1,14 @@
-import model.IModel;
+package users;
+
+import model.UsersModelInterface;
 import model.beans.User;
-import model.db.IDB;
+import model.db.UserDBInterface;
 
 import java.util.List;
 
-public class FakeModel implements IModel{
+public class FakeModel implements UsersModelInterface {
   public static boolean loggedIn;
-  public static IDB dbHelper;
+  public static UserDBInterface dbHelper;
   public static List<User> users;
   public static User user;
 

@@ -1,7 +1,9 @@
-import model.IModel;
-import model.Model;
+package users;
+
+import model.UsersModelInterface;
+import model.UsersModel;
 import model.beans.User;
-import model.db.IDB;
+import model.db.UserDBInterface;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,11 +15,11 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.mock;
 
 public class MockitoTest {
-  private IModel fakeModel = new FakeModel();
-  private IDB mockitoDBHelper = mock(IDB.class);
+  private UsersModelInterface fakeModel = new FakeModel();
+  private UserDBInterface mockitoDBHelper = mock(UserDBInterface.class);
   private List<User> data = new ArrayList<>();
 
-  //Test with fake Model, without Mockito
+  //Test with fake UsersModel, without Mockito
 //  @Test
 //  public void getAllUsers(){
 //    List<User> expected = new ArrayList<>();
@@ -49,8 +51,8 @@ public class MockitoTest {
 
   @Test
   public void getAllUsersModel(){
-    Model.users = mockitoDBHelper.getAllUsers();
-    List<User> expected = Model.users;
+    UsersModel.users = mockitoDBHelper.getAllUsers();
+    List<User> expected = UsersModel.users;
     List<User> actual = data;
     assertEquals(expected, actual);
   }

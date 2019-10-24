@@ -1,17 +1,17 @@
 package model;
 
 import model.beans.Car;
-import model.db.CarDBInterface;
+import model.db.CarsDBInterface;
 import model.db.CarsDBHelper;
 
 import java.util.List;
 
 public class CarsModel {
 
-  private CarDBInterface db;
+  private CarsDBInterface db;
 
-  public CarsModel(){
-    db = new CarsDBHelper();
+  public CarsModel(CarsDBHelper db){
+    this.db = db;
   }
 
   public List<Car> getAllCars(){

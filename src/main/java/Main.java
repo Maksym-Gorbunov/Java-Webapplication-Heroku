@@ -10,9 +10,9 @@ import java.util.List;
 public class Main {
   public static void main(String[] args) {
 
-    CarsModel model = new CarsModel();
-    List<Car> data = model.getAllCars();
-    System.out.println(data);
+//    CarsModel model = new CarsModel();
+//    List<Car> data = model.getAllCars();
+//    System.out.println(data);
 
 
 //    Path root = Paths.get(".").normalize().toAbsolutePath();

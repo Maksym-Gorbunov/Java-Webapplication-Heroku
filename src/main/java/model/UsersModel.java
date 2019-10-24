@@ -5,7 +5,7 @@ import model.db.UsersDBHelper;
 
 import java.util.List;
 
-public class Model implements IModel{
+public class UsersModel implements UsersModelInterface {
   public static boolean loggedIn;
   public static UsersDBHelper dbHelper;
   public static List<User> users;

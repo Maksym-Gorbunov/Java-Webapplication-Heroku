@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import model.Model;
+import model.UsersModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +16,10 @@ public class SignOut extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    Model.loggedIn = false;
-    Model.user = null;
+    UsersModel.loggedIn = false;
+    UsersModel.user = null;
     response.sendRedirect("login");
-//    request.setAttribute("users", model.IModel.users);
+//    request.setAttribute("users", model.UsersModelInterface.users);
 //    request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
   }
 }

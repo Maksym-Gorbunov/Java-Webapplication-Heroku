@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface CarDBInterface {
+public interface CarsDBInterface {
   public List<Car> selectAll();
 
   public void insert(String make, String color, String licensenumber);

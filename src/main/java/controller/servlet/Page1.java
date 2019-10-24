@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import model.Model;
+import model.UsersModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,13 +17,13 @@ public class Page1 extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (!Model.loggedIn) {
+    if (!UsersModel.loggedIn) {
       response.sendRedirect("login");
-//      request.setAttribute("users", model.IModel.users);
+//      request.setAttribute("users", model.UsersModelInterface.users);
 //      request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
-      request.setAttribute("user", Model.user);
-      request.setAttribute("users", Model.users);
+      request.setAttribute("user", UsersModel.user);
+      request.setAttribute("users", UsersModel.users);
       request.getRequestDispatcher("/pages/page1/page1.jsp").forward(request, response);
     }
   }

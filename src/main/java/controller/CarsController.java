@@ -2,24 +2,20 @@ package controller;
 
 import model.CarsModel;
 import model.beans.Car;
-import model.db.CarDBInterface;
+import model.db.CarsDBHelper;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.soap.Addressing;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/cars")
 public class CarsController extends HttpServlet {
 
-  private CarsModel model = new CarsModel();
+  private CarsModel model = new CarsModel(new CarsDBHelper());
 
   // DELETE
   @Override
