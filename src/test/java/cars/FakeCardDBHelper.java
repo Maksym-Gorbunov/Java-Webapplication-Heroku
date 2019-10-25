@@ -2,37 +2,10 @@ package cars;
 
 import model.beans.Car;
 import model.db.CarsDBInterface;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FakeCardDBHelper implements CarsDBInterface {
-
-  public static void main(String[] args) {
-    FakeCardDBHelper f = new FakeCardDBHelper();
-
-    f.fakeData.forEach(System.out::println);
-    System.out.println();
-
-    f.delete("AAA111");
-
-    f.fakeData.forEach(System.out::println);
-    System.out.println();
-
-    f.update("BBB222", new Car("Smart", "Golden", "sds"));
-    f.fakeData.forEach(System.out::println);
-    System.out.println();
-
-    f.fakeData.add(null);
-
-    f.fakeData.forEach(System.out::println);
-    System.out.println();
-
-
-  }
-
 
   private List<Car> fakeData = new ArrayList<>();
 

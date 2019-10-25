@@ -10,7 +10,7 @@ public class CarsModel {
 
   private CarsDBInterface db;
 
-  public CarsModel(CarsDBHelper db){
+  public CarsModel(CarsDBInterface db){
     this.db = db;
   }
 
