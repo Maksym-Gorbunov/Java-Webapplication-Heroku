@@ -2,14 +2,11 @@ package cars;
 
 import model.CarsModel;
 import model.beans.Car;
-import model.beans.User;
 import model.db.CarsDBInterface;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class CarsTest {
@@ -23,11 +20,6 @@ public class CarsTest {
   }
 
   @Test
-  public void getAllTest(){
-
-  }
-
-  @Test
   public void addTest(){
     Car car = new Car("Tesla", "black", "TTT123");
     assertEquals(false, model.getAllCars().contains(car));
@@ -36,7 +28,7 @@ public class CarsTest {
   }
 
   @Test
-  public void selectAllTest(){
+  public void getAllTest(){
     List<Car> expected = new ArrayList<>();
     expected.add(new Car("Ford", "green", "AAA111"));
     expected.add(new Car("Audi", "red", "BBB222"));
@@ -70,5 +62,4 @@ public class CarsTest {
     assertEquals(null, model.exist(car.getLicensenumber()));
 
   }
-
 }
