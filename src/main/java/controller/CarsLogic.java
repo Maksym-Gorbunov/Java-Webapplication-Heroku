@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import model.beans.Car;
 import model.db.CarsDBInterface;
@@ -6,11 +6,11 @@ import model.db.CarsDBHelper;
 
 import java.util.List;
 
-public class CarsModel {
+public class CarsLogic {
 
   private CarsDBInterface db;
 
-  public CarsModel(CarsDBInterface db){
+  public CarsLogic(CarsDBInterface db){
     this.db = db;
   }
 

@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import model.UsersModel;
+import controller.UsersLogic;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,14 +18,14 @@ public class Users extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (!UsersModel.loggedIn) {
+    if (!UsersLogic.loggedIn) {
       response.sendRedirect("login");
-//      request.setAttribute("users", model.UsersModelInterface.users);
+//      request.setAttribute("users", controller.UsersLogicInterface.users);
 //      request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
       request.setAttribute("pageName", "users");
-      request.setAttribute("user", UsersModel.user);
-      request.setAttribute("users", UsersModel.users);
+      request.setAttribute("user", UsersLogic.user);
+      request.setAttribute("users", UsersLogic.users);
       request.getRequestDispatcher("/pages/users/users.jsp").forward(request, response);
     }
   }

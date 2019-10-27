@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import model.UsersModel;
+import controller.UsersLogic;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,16 +18,16 @@ public class Home extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     System.out.println("HOME");
-    UsersModel.user = UsersModel.dbHelper.getAllUsers().get(3);
-    UsersModel.loggedIn = true;
+    UsersLogic.user = UsersLogic.dbHelper.getAllUsers().get(3);
+    UsersLogic.loggedIn = true;
 
 
 
-    if (!UsersModel.loggedIn) {
+    if (!UsersLogic.loggedIn) {
       response.sendRedirect("login");
     } else {
       request.setAttribute("pageName", "home");
-      request.setAttribute("user", UsersModel.user);
+      request.setAttribute("user", UsersLogic.user);
       request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
   }

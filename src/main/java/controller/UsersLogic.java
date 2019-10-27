@@ -1,11 +1,11 @@
-package model;
+package controller;
 
 import model.beans.User;
 import model.db.UsersDBHelper;
 
 import java.util.List;
 
-public class UsersModel implements UsersModelInterface {
+public class UsersLogic implements UsersLogicInterface {
   public static boolean loggedIn;
   public static UsersDBHelper dbHelper;
   public static List<User> users;
