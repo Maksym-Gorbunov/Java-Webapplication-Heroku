@@ -71,8 +71,8 @@
                     <td>
                             <%--if Admin--%>
                         <c:if test="${user.login=='admin'}">
-                            <button type="button" class="btn btn-sm btn-info editBtn">Edit</button>
-                            <button type="button" class="btn btn-sm btn-danger deleteBtn">Delete</button>
+                            <button type="button" class="btn btn-sm btn-info editBtn" disabled>Edit</button>
+                            <button type="button" class="btn btn-sm btn-danger deleteBtn" disabled>Delete</button>
                         </c:if>
 
                             <%--if User--%>
@@ -82,7 +82,7 @@
                                 <button type="button" class="btn btn-sm btn-danger" disabled>Danger</button>
                             </c:if>
                             <c:if test="${user.login==u.login}">
-                                <button type="button" class="btn btn-sm btn-info">Info</button>
+                                <button type="button" class="btn btn-sm btn-info" disabled>Info</button>
                                 <button type="button" class="btn btn-sm btn-danger" disabled>Danger</button>
                             </c:if>
                         </c:if>
@@ -93,7 +93,7 @@
         </table>
 
         <p>
-            <button type="button" class="btn btn-success">Add new user</button>
+            <button type="button" class="btn btn-success addBtn" disabled>Add new user</button>
         </p>
     </div>
 </div>

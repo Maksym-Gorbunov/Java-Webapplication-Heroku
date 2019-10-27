@@ -21,6 +21,10 @@
     background-color: #c9c9c9;
 }
 
+.carsTable td:first-child{
+    width: 20em;
+}
+
 
 
 
