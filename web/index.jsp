@@ -13,16 +13,39 @@
     <%-- Mine --%>
     <link rel=icon href="img/favicon.ico">
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 
 <body>
 
 <jsp:include page="components/header.jsp"/>
 
-<div>
-    <h1>INDEX</h1>
-    <p>Welcome ${user.login}</p>
-    <img src="${pageContext.request.contextPath}/img/5.jpg" alt="img" height="400" width="400">
+<div class="main">
+    <h2>Home</h2>
+
+    <div class="left">
+        <div>
+            <p><b>Web Application</b></p>
+            <p></p>
+            <p>Java / Web / Servlet</p>
+            <p>Heroku</p>
+            <p>Mockito/JUnit</p>
+            <p>Tomcat 8.5</p>
+            <p>Jsp / Jstl</p>
+            <p>sQlite 3</p>
+            <p>Html5 / Css3</p>
+            <p>JavaScript / JQuery</p>
+            <p>Bootstap 3.4</p>
+
+            <p>Source Code: <a href="https://github.com/Maksym-Gorbunov/mg-webapplication" target="_blank"><i
+                    class="fab fa-github"></i></a></p>
+        </div>
+    </div>
+
+    <div class="right">
+        <img src="${pageContext.request.contextPath}/img/maxcoder.jpg" alt="img" width="300">
+    </div>
 </div>
 
 <script src="js/script.js"></script>

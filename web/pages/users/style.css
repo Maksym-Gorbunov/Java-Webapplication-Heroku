@@ -1,9 +1,28 @@
-.usersTable{
-    margin: 3em auto 3em auto;
-    /*position: absolute;*/
-    background-color: #ccc;
-    min-width: 300px;
-    max-width: 50vw;
-    min-height: 20px;
-    border: 2px solid blue;
+/* variables*/
+:root {
+    --borderColor: #919191;
+    --tableBgColor:#e2e2e2;
 }
+
+.main{
+    width: 70vw;
+    margin: 3em auto 3em auto;
+}
+.usersTable,
+.addForm{
+    width: 70vw;
+    background-color: var(--tableBgColor);
+    border: 2px solid var(--borderColor);
+}
+.addForm{
+    padding: 1em;
+}
+.usersTable thead{
+    background-color: #c9c9c9;
+}
+
+
+
+
+
+

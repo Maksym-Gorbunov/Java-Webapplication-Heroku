@@ -22,13 +22,6 @@ public class CarsController extends HttpServlet {
   protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String licensenumber = request.getParameter("licensenumber");
     model.delete(licensenumber);
-//    response.sendRedirect("/");
-    System.out.println("--del Servlet--" + licensenumber);
-//    response.sendRedirect("pages/users");
-////    doGet(request, response);
-////    request.setAttribute("cars", cars);
-//    //request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);
-
   }
 
   // UPDATE
@@ -69,6 +62,7 @@ public class CarsController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     List<Car> cars = model.getAllCars();
+    request.setAttribute("pageName", "cars");
     request.setAttribute("cars", cars);
     request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);
   }

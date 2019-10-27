@@ -25,6 +25,8 @@
 
 <div class="main">
 
+    <h2>Cars</h2>
+
     <p>Total:<span id="total">${cars.size()}</span></p>
 
     <%-- ADD NEW CAR --%>

@@ -32,8 +32,7 @@ public class Login extends HttpServlet {
         if (user != null) {
           UsersModel.loggedIn = true;
           UsersModel.user = user;
-          //response.sendRedirect("");
-          response.sendRedirect("users");
+          response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
         } else {
           String message = "Login or password invalid! Try again.";
           request.setAttribute("message", message);
@@ -47,8 +46,6 @@ public class Login extends HttpServlet {
         request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
       }
     } else {
-//      request.setAttribute("user", model.UsersModelInterface.user);
-//      request.getRequestDispatcher("/index.jsp").forward(request, response);
       response.sendRedirect("login");
     }
   }
@@ -58,6 +55,7 @@ public class Login extends HttpServlet {
       request.setAttribute("data", data);
       request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
+      request.setAttribute("pageName", "home");
       request.setAttribute("user", UsersModel.user.getLogin());
       request.setAttribute("users", UsersModel.users);
       request.getRequestDispatcher("/index.jsp").forward(request, response);

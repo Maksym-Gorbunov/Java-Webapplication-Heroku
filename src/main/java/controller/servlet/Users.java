@@ -23,6 +23,7 @@ public class Users extends HttpServlet {
 //      request.setAttribute("users", model.UsersModelInterface.users);
 //      request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
+      request.setAttribute("pageName", "users");
       request.setAttribute("user", UsersModel.user);
       request.setAttribute("users", UsersModel.users);
       request.getRequestDispatcher("/pages/users/users.jsp").forward(request, response);

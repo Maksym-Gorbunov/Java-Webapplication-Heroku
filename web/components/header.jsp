@@ -2,7 +2,8 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -13,12 +14,14 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="">Home<span class="sr-only">(current)</span></a></li>
-                <li><a href="users">Users</a></li>
-                <li><a href="cars">Cars</a></li>
+            <ul class="nav navbar-nav" id="navigation">
+                <li name="home"><a href="">Home<span class="sr-only">(current)</span></a></li>
+                <li name="users"><a href="users">Users</a></li>
+                <li name="cars"><a href="cars">Cars</a></li>
+                <li name="about"><a href="about">About</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="pages/page1">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -39,7 +42,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Link</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"
                        style="color: #00AD5F">
                         Welcome ${user.login} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -54,3 +58,21 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+
+<script>
+    var pageName = '${pageName}';
+    var current = false;
+    $("#navigation li").each(function () {
+        var navLink = $(this);
+        if (pageName == navLink.attr("name")) {
+            navLink.addClass('active');
+            current = true;
+        }
+    });
+    if (current == false) {
+        $("#navigation li:nth-child(1)").addClass('active');
+    }
+
+
+</script>

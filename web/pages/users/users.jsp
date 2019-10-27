@@ -13,87 +13,92 @@
     <link rel=icon href="img/favicon.ico">
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/script.js"></script>
-    <link rel="stylesheet" href="pages/page1/style.css"/>
+    <link rel="stylesheet" href="pages/users/style.css"/>
 
 </head>
 
 <body>
 <jsp:include page="../../components/header.jsp"/>
-<h3>PAGE 1</h3>
-<h3>USERS</h3>
-<p>Database: sqlite 3</p>
-<%--java code in jsp--%>
-<%--
-<%
-srciptlit
-%>
 
---%>
+<div class="main">
 
-<%--<img src="img/5.jpg" alt="img" height="400" width="400">--%>
+    <h2>Users</h2>
 
-<p>Total: ${users.size()}</p>
+    <p>Database: sqlite 3</p>
+    <%--java code in jsp--%>
+    <%--
+    <%
+    srciptlit
+    %>
 
-<div class="usersTable">
-    <table class="table table-condensed" id="usersTable">
+    --%>
 
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>User</th>
-            <th>Password</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
+    <%--<img src="img/5.jpg" alt="img" height="400" width="400">--%>
 
-        <tbody class="table-striped">
-        <c:forEach items="${users}" var="u">
-            <tr id="row_'${u.id}'">
-                <td>${u.id}</td>
-                <td>${u.login}</td>
-                <td>
-                        <%--if Admin--%>
-                    <c:if test="${user.login=='admin'}">
-                        ${u.password}
-                    </c:if>
+    <p>Total: ${users.size()}</p>
 
-                        <%--if User--%>
-                    <c:if test="${user.login!='admin'}">
-                        <c:if test="${u.login==user.login}">
+    <div class="usersTable">
+        <table class="table table-condensed" id="usersTable">
+
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody class="table-striped">
+            <c:forEach items="${users}" var="u">
+                <tr id="row_'${u.id}'">
+                    <td>${u.id}</td>
+                    <td>${u.login}</td>
+                    <td>
+                            <%--if Admin--%>
+                        <c:if test="${user.login=='admin'}">
                             ${u.password}
                         </c:if>
-                    </c:if>
 
-                </td>
-                <td>
-                        <%--if Admin--%>
-                    <c:if test="${user.login=='admin'}">
-                        <button type="button" class="btn btn-sm btn-info editBtn">Edit</button>
-                        <button type="button" class="btn btn-sm btn-danger deleteBtn">Delete</button>
-                    </c:if>
-
-                        <%--if User--%>
-                    <c:if test="${user.login!='admin'}">
-                        <c:if test="${user.login!=u.login}">
-                            <button type="button" class="btn btn-sm btn-info" disabled>Info</button>
-                            <button type="button" class="btn btn-sm btn-danger" disabled>Danger</button>
+                            <%--if User--%>
+                        <c:if test="${user.login!='admin'}">
+                            <c:if test="${u.login==user.login}">
+                                ${u.password}
+                            </c:if>
                         </c:if>
-                        <c:if test="${user.login==u.login}">
-                            <button type="button" class="btn btn-sm btn-info">Info</button>
-                            <button type="button" class="btn btn-sm btn-danger" disabled>Danger</button>
-                        </c:if>
-                    </c:if>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
 
-    <p>
-        <button type="button" class="btn btn-success">Add new user</button>
-    </p>
+                    </td>
+                    <td>
+                            <%--if Admin--%>
+                        <c:if test="${user.login=='admin'}">
+                            <button type="button" class="btn btn-sm btn-info editBtn">Edit</button>
+                            <button type="button" class="btn btn-sm btn-danger deleteBtn">Delete</button>
+                        </c:if>
+
+                            <%--if User--%>
+                        <c:if test="${user.login!='admin'}">
+                            <c:if test="${user.login!=u.login}">
+                                <button type="button" class="btn btn-sm btn-info" disabled>Info</button>
+                                <button type="button" class="btn btn-sm btn-danger" disabled>Danger</button>
+                            </c:if>
+                            <c:if test="${user.login==u.login}">
+                                <button type="button" class="btn btn-sm btn-info">Info</button>
+                                <button type="button" class="btn btn-sm btn-danger" disabled>Danger</button>
+                            </c:if>
+                        </c:if>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+
+        <p>
+            <button type="button" class="btn btn-success">Add new user</button>
+        </p>
+    </div>
 </div>
 
-<script src="pages/page1/script.js"></script>
+
+<script src="pages/users/script.js"></script>
 </body>
 </html>

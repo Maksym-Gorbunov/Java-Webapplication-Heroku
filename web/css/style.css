@@ -1,0 +1,22 @@
+.main{
+    width: 70vw;
+    margin: 3em auto 3em auto;
+}
+
+h2{
+    text-align: center;
+}
+
+.left,
+.right{
+    width: 50%;
+    float: left;
+}
+.right{
+    position: relative;
+}
+.right img{
+    position: absolute;
+    top:0;
+    right: 0;
+ }
