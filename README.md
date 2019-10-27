@@ -12,5 +12,5 @@
 
 
 Mockito / JUnit Test
-![](info/test1.jpg)
+![](info/test.png)
   

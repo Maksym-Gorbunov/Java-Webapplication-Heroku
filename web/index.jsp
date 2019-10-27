@@ -44,7 +44,7 @@
     </div>
 
     <div class="right">
-        <img src="${pageContext.request.contextPath}/img/maxcoder.jpg" alt="img" width="300">
+        <img src="${pageContext.request.contextPath}/img/test.png" alt="img" width="300">
     </div>
 </div>
 

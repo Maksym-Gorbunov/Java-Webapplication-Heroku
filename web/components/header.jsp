@@ -20,7 +20,7 @@
                 <li name="home"><a href="">Home<span class="sr-only">(current)</span></a></li>
                 <li name="users"><a href="users">Users</a></li>
                 <li name="cars"><a href="cars">Cars</a></li>
-                <li name="about" class="disabled"><a href="about">About</a></li>
+                <li name="about"><a href="about">About</a></li>
                 <li class="dropdown disabled">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Dropdown <span class="caret"></span></a>
