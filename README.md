@@ -9,8 +9,8 @@
 * sQlite 3
 * Html/Css/JS
 * Bootstap 3.4
+* Mockito / JUnit Test
 
 
-Mockito / JUnit Test
 ![](info/test.png)
   
