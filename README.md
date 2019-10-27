@@ -7,7 +7,7 @@
 * jsp
 * jstl
 * sQlite 3
-* Html/Css/Javascript
+* Html/Css/JS
 * Bootstap 3.4
 
 

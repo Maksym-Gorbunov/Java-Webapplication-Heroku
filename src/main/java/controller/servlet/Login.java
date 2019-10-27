@@ -20,7 +20,7 @@ public class Login extends HttpServlet {
   public Login(){
     data.add(UsersModel.users.get(0));
     data.add(UsersModel.users.get(1));
-    data.add(UsersModel.users.get(2));
+    data.add(UsersModel.users.get(3));
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +32,8 @@ public class Login extends HttpServlet {
         if (user != null) {
           UsersModel.loggedIn = true;
           UsersModel.user = user;
-          response.sendRedirect("pages/page1");
+          //response.sendRedirect("");
+          response.sendRedirect("users");
         } else {
           String message = "Login or password invalid! Try again.";
           request.setAttribute("message", message);

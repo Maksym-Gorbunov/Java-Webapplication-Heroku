@@ -1,4 +1,4 @@
-package controller;
+package controller.servlet;
 
 import model.CarsModel;
 import model.beans.Car;
@@ -24,7 +24,7 @@ public class CarsController extends HttpServlet {
     model.delete(licensenumber);
 //    response.sendRedirect("/");
     System.out.println("--del Servlet--" + licensenumber);
-//    response.sendRedirect("pages/page1");
+//    response.sendRedirect("pages/users");
 ////    doGet(request, response);
 ////    request.setAttribute("cars", cars);
 //    //request.getRequestDispatcher("/pages/cars/cars.jsp").forward(request, response);

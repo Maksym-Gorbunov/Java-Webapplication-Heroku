@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/pages/page1")
-public class Page1 extends HttpServlet {
+//@WebServlet("/pages/users")
+@WebServlet("/users")
+public class Users extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -24,7 +25,7 @@ public class Page1 extends HttpServlet {
     } else {
       request.setAttribute("user", UsersModel.user);
       request.setAttribute("users", UsersModel.users);
-      request.getRequestDispatcher("/pages/page1/page1.jsp").forward(request, response);
+      request.getRequestDispatcher("/pages/users/users.jsp").forward(request, response);
     }
   }
 }
