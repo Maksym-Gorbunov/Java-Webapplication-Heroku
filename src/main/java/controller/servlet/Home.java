@@ -17,9 +17,9 @@ public class Home extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("HOME");
-    UsersLogic.user = UsersLogic.dbHelper.getAllUsers().get(3);
-    UsersLogic.loggedIn = true;
+//    System.out.println("HOME");
+//    UsersLogic.user = UsersLogic.dbHelper.getAllUsers().get(3);
+//    UsersLogic.loggedIn = true;
 
 
 

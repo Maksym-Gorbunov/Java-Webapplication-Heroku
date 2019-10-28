@@ -14,7 +14,9 @@ public class CarsDBHelper implements CarsDBInterface {
 
   private Connection connect() {
 //    String path = System.getProperty("user.dir") + File.separator + "data" + File.separator + "cars.db";
+
     String path = "C:\\java\\mg-webapplication\\out\\artifacts\\mg_webapplication_Web_exploded\\data\\cars.db";
+//    String path = "${catalina.base}/webapps/web/WEB-INF/classes/data/cars.db";
     String url = "jdbc:sqlite:" + path;
     Connection conn = null;
     try {
