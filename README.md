@@ -1,8 +1,10 @@
 # WebAplication 
 @author: Maksym Gorbunov
 
+![](info/info.gif)
+
 * Java
-* Heroku
+* Heroku (https://mg-webapplication.herokuapp.com)
 * Tomcat 8.5
 * jsp / JSTL
 * SQLite 3
@@ -12,7 +14,6 @@
 * Dependency Injection
 * Mockito / JUnit Test
 
-![](info/info.gif)
 
 
 
