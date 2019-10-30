@@ -1,8 +1,7 @@
 package controller;
 
 import model.beans.Car;
-import model.db.CarsDBInterface;
-import model.db.CarsDBHelper;
+import model.db.cars.CarsDBInterface;
 
 import java.util.List;
 

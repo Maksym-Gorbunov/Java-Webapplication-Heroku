@@ -1,4 +1,4 @@
-package model.db;
+package model.db.users;
 
 /*
 id          login       password
@@ -31,11 +31,11 @@ public class UsersDBHelper implements UserDBInterface {
     //String dbPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + "cars.db";
     //String dbPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + "users.db";
     //String dbPath = System.getProperty("user.dir")+ File.separator + "web" + File.separator + "data" + File.separator + "users.db";
-
+    //dbPath = "http://maxcoder.pro/heroku_mg-webapplication/users.db";
     dbPath = "C:\\java\\mg-webapplication\\out\\artifacts\\mg_webapplication_Web_exploded\\data\\users.db";
-//    dbPath = "${catalina.base}/webapps/web/WEB-INF/classes/data/users.db";
-    url = "jdbc:sqlite:" + dbPath;
+    //dbPath = "${catalina.base}/webapps/web/WEB-INF/classes/data/users.db";
 
+    url = "jdbc:sqlite:" + dbPath;
   }
 
   public Connection connect() {

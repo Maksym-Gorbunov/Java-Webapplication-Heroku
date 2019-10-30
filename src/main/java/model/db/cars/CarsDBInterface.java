@@ -1,4 +1,4 @@
-package model.db;
+package model.db.cars;
 import model.beans.Car;
 
 import java.io.File;

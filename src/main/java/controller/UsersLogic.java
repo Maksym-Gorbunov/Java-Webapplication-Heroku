@@ -1,7 +1,7 @@
 package controller;
 
 import model.beans.User;
-import model.db.UsersDBHelper;
+import model.db.users.UsersDBHelper;
 
 import java.util.List;
 

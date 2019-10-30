@@ -1,7 +1,7 @@
 package cars;
 
 import model.beans.Car;
-import model.db.CarsDBInterface;
+import model.db.cars.CarsDBInterface;
 import java.util.ArrayList;
 import java.util.List;
 

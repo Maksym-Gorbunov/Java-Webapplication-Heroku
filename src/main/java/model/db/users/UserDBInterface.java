@@ -1,4 +1,4 @@
-package model.db;
+package model.db.users;
 
 import model.beans.User;
 import java.sql.*;

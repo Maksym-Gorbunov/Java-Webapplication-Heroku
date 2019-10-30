@@ -2,7 +2,7 @@ package controller.servlet;
 
 import controller.CarsLogic;
 import model.beans.Car;
-import model.db.CarsDBHelper;
+import model.db.cars.CarsDBHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

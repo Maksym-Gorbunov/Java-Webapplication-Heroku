@@ -2,7 +2,7 @@ package cars;
 
 import controller.CarsLogic;
 import model.beans.Car;
-import model.db.CarsDBHelper;
+import model.db.cars.CarsDBHelper;
 import org.junit.Before;
 import org.junit.Test;
 
