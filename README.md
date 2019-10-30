@@ -14,7 +14,7 @@
 
 ![](info/info.gif)
 
-for sqlite3 change 1 row in Models constructor:
+for sqlite3 change 1 row in Models constructor: 
 "this.db = new FakeCarsDBHelper()" to "this.db = db";
 current version data in memory, because heroku does't support filesystem     
 
