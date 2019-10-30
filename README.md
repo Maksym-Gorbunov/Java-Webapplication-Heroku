@@ -17,14 +17,14 @@ for sqlite3 change 1 row in Models constructor:
 current version data in memory, because heroku does't support filesystem     
 
 
-![](info/info.gif | width="450px")
+![](info/info.gif | width=450px)
 
 
 
-![](info/login.jpg | width="450px")
-![](info/home.jpg | width="450px")
-![](info/cars.jpg | width="450px")
-![](info/users.jpg | width="450px")
-![](info/about.png | width="450px")
+![](info/login.jpg | width=450px)
+![](info/home.jpg | width=450px)
+![](info/cars.jpg | width=450px)
+![](info/users.jpg | width=450px)
+![](info/about.png | width=450px)
 ![](info/test.png)
   
