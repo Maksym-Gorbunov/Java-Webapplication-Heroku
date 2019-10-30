@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersDBHelper implements UserDBInterface {
+public class UsersDBHelper implements UsersDBInterface {
 
   private String dbPath;
   private String url;

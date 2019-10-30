@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import controller.UsersLogic;
+import model.UsersModel;
 import model.beans.User;
 
 import javax.servlet.ServletException;
@@ -18,20 +18,20 @@ public class Login extends HttpServlet {
   private List<User> data = new ArrayList<>();
 
   public Login(){
-    data.add(UsersLogic.users.get(0));
-    data.add(UsersLogic.users.get(1));
-    data.add(UsersLogic.users.get(3));
+    data.add(UsersModel.users.get(0));
+    data.add(UsersModel.users.get(1));
+    data.add(UsersModel.users.get(3));
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (!UsersLogic.loggedIn) {
+    if (!UsersModel.loggedIn) {
       String login = request.getParameter("username");
       String password = request.getParameter("pass");
       if ((login != null && !login.equals("")) && (password != null && !password.equals(""))) {
-        User user = UsersLogic.userExist(login, password);
+        User user = UsersModel.userExist(login, password);
         if (user != null) {
-          UsersLogic.loggedIn = true;
-          UsersLogic.user = user;
+          UsersModel.loggedIn = true;
+          UsersModel.user = user;
           response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
         } else {
           String message = "Login or password invalid! Try again.";
@@ -51,13 +51,13 @@ public class Login extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (!UsersLogic.loggedIn) {
+    if (!UsersModel.loggedIn) {
       request.setAttribute("data", data);
       request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);
     } else {
       request.setAttribute("pageName", "home");
-      request.setAttribute("user", UsersLogic.user.getLogin());
-      request.setAttribute("users", UsersLogic.users);
+      request.setAttribute("user", UsersModel.user.getLogin());
+      request.setAttribute("users", UsersModel.users);
       request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
   }

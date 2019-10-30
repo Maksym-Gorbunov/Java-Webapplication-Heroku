@@ -1,6 +1,6 @@
 package cars;
 
-import controller.CarsLogic;
+import model.CarsModel;
 import model.beans.Car;
 import model.db.cars.CarsDBHelper;
 import org.junit.Before;
@@ -18,11 +18,11 @@ public class MockitoCarsTest {
 
   CarsDBHelper service = mock(CarsDBHelper.class);
   List<Car> data;
-  CarsLogic model;
+  CarsModel model;
 
   @Before
   public void init() {
-    model = new CarsLogic(service);
+    model = new CarsModel(service);
     // Test DATA
     data = new ArrayList<>();
     data.add(new Car("Ford", "green", "AAA111"));

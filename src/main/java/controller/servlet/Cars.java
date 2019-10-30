@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import controller.CarsLogic;
+import model.CarsModel;
 import model.beans.Car;
 import model.db.cars.CarsDBHelper;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @WebServlet("/cars")
 public class Cars extends HttpServlet {
 
-  private CarsLogic model = new CarsLogic(new CarsDBHelper());
+  private CarsModel model = new CarsModel(new CarsDBHelper());
 
   // DELETE
   @Override

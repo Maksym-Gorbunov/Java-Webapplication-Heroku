@@ -1,20 +1,14 @@
-package cars;
+package model.db.cars.fake;
 
 import model.beans.Car;
 import model.db.cars.CarsDBInterface;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class FakeCardDBHelper implements CarsDBInterface {
+public class FakeCarsDBHelper implements CarsDBInterface {
 
-  private List<Car> fakeData = new ArrayList<>();
-
-  public FakeCardDBHelper() {
-    fakeData.add(new Car("Ford", "green", "AAA111"));
-    fakeData.add(new Car("Audi", "red", "BBB222"));
-    fakeData.add(new Car("Honda", "blue", "CCC333"));
-    fakeData.add(new Car("Volvo", "white", "DDD444"));
-  }
+  private List<Car> fakeData = FakeCarsData.fakeData;
 
   @Override
   public List<Car> selectAll() {
@@ -43,7 +37,15 @@ public class FakeCardDBHelper implements CarsDBInterface {
 
   @Override
   public void delete(String licensenumber) {
-    fakeData.removeIf(car -> car.getLicensenumber() == licensenumber);
+    Car car = null;
+    for (Car c : fakeData) {
+      if (c.getLicensenumber().equals(licensenumber)) {
+        car = c;
+      }
+    }
+    if(car!=null){
+      fakeData.remove(car);
+    }
   }
 
   @Override

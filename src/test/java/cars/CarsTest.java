@@ -1,6 +1,6 @@
 package cars;
 
-import controller.CarsLogic;
+import model.CarsModel;
 import model.beans.Car;
 import model.db.cars.CarsDBInterface;
 import org.junit.Before;
@@ -11,12 +11,12 @@ import static org.junit.Assert.*;
 
 public class CarsTest {
 
-  CarsLogic model;
-  CarsDBInterface fakeDBHelper = new FakeCardDBHelper();
+  CarsModel model;
+  CarsDBInterface fakeDBHelper = new FakeCarsDBHelper();
 
   @Before
   public void init(){
-    model = new CarsLogic(fakeDBHelper);
+    model = new CarsModel(fakeDBHelper);
   }
 
   @Test

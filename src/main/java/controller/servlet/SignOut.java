@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import controller.UsersLogic;
+import model.UsersModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +16,8 @@ public class SignOut extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    UsersLogic.loggedIn = false;
-    UsersLogic.user = null;
+    UsersModel.loggedIn = false;
+    UsersModel.user = null;
     response.sendRedirect("login");
 //    request.setAttribute("users", controller.UsersLogicInterface.users);
 //    request.getRequestDispatcher("/pages/login/login.jsp").forward(request, response);

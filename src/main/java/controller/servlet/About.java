@@ -1,6 +1,6 @@
 package controller.servlet;
 
-import controller.UsersLogic;
+import model.UsersModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,11 +19,11 @@ public class About extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (!UsersLogic.loggedIn) {
+    if (!UsersModel.loggedIn) {
       response.sendRedirect("login");
     } else {
       request.setAttribute("pageName", "about");
-      request.setAttribute("user", UsersLogic.user);
+      request.setAttribute("user", UsersModel.user);
       request.getRequestDispatcher("/pages/about/about.jsp").forward(request, response);
     }
   }

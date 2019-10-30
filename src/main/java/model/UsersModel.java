@@ -1,19 +1,21 @@
-package controller;
+package model;
 
 import model.beans.User;
-import model.db.users.UsersDBHelper;
+import model.db.users.UsersDBInterface;
+import model.db.users.fake.FakeUsersDBHelper;
 
 import java.util.List;
 
-public class UsersLogic implements UsersLogicInterface {
+public class UsersModel{
   public static boolean loggedIn;
-  public static UsersDBHelper dbHelper;
+  public static UsersDBInterface dbHelper;
   public static List<User> users;
   public static User user;
 
   static {
     loggedIn = false;
-    dbHelper = new UsersDBHelper();
+    //dbHelper = new UsersDBHelper();
+    dbHelper = new FakeUsersDBHelper();
     users = dbHelper.getAllUsers();
   }
 

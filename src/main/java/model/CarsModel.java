@@ -1,16 +1,18 @@
-package controller;
+package model;
 
 import model.beans.Car;
 import model.db.cars.CarsDBInterface;
+import model.db.cars.fake.FakeCarsDBHelper;
 
 import java.util.List;
 
-public class CarsLogic {
+public class CarsModel {
 
   private CarsDBInterface db;
 
-  public CarsLogic(CarsDBInterface db){
-    this.db = db;
+  public CarsModel(CarsDBInterface db){
+    //this.db = db;
+    this.db = new FakeCarsDBHelper();
   }
 
   public List<Car> getAllCars(){
