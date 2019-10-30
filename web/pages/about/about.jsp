@@ -38,8 +38,11 @@
             <p>JavaScript / jQuery</p>
             <p>Bootstrap 3.4</p>
 
-            <p>Source Code: <a href="https://github.com/Maksym-Gorbunov/mg-webapplication" target="_blank"><i
-                    class="fab fa-github"></i></a></p>
+            <p>Source Code: <a href="https://github.com/Maksym-Gorbunov/mg-webapplication" target="_blank">
+                <i class="fab fa-github"></i></a></p>
+
+            <p>Heroku: <a href="https://mg-webapplication.herokuapp.com/" target="_blank">
+                <img src="${pageContext.request.contextPath}/img/heroku.jpg" alt="img" height="20px"></a></p>
         </div>
     </div>
 
