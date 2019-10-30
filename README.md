@@ -27,7 +27,7 @@ current version data in memory, because heroku does't support filesystem
 ![](info/home.jpg)
 ![](info/cars.jpg)
 ![](info/users.jpg)
-![](info/about.png)
+![](info/about.jpg)
 
-![](info/test.png)
+![](info/test.jpg)
   
