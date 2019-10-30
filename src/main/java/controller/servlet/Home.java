@@ -17,11 +17,9 @@ public class Home extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("HOME");
-    UsersModel.user = UsersModel.dbHelper.getAllUsers().get(3);
-    UsersModel.loggedIn = true;
-
-
+    //System.out.println("HOME");
+    //UsersModel.user = UsersModel.dbHelper.getAllUsers().get(3);
+    //UsersModel.loggedIn = true;
 
     if (!UsersModel.loggedIn) {
       response.sendRedirect("login");

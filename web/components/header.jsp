@@ -35,7 +35,7 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left disabled">
+            <form class="navbar-form navbar-left disabled searchForm">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
@@ -70,6 +70,11 @@
         if (pageName == navLink.attr("name")) {
             navLink.addClass('active');
             current = true;
+            if((pageName == 'users') || (pageName == 'cars')){
+                $('.searchForm').css('display', 'block');
+            } else {
+                $('.searchForm').css('display', 'none');
+            }
         }
     });
     if (current == false) {
