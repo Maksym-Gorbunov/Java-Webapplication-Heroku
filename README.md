@@ -18,6 +18,7 @@
 
 
 
+_____________________________________________________________________
 
 for sqlite3 change 1 row in Models constructor: 
 "this.db = new FakeCarsDBHelper()" to "this.db = db";
