@@ -28,18 +28,23 @@
         <div>
             <p><b>Web Application</b></p>
             <p></p>
-            <p>Java / Web / Servlet</p>
+            <p>Java / Maven / Web / Servlet</p>
             <p>Heroku</p>
             <p>Mockito/JUnit</p>
             <p>Tomcat 8.5</p>
-            <p>Jsp / Jstl</p>
-            <p>sQlite 3</p>
+            <p>Jsp / JSTL</p>
+            <p>SQLite 3</p>
             <p>Html5 / Css3</p>
-            <p>JavaScript / JQuery</p>
-            <p>Bootstap 3.4</p>
+            <p>JavaScript / jQuery</p>
+            <p>Bootstrap 3.4</p>
 
             <p>Source Code: <a href="https://github.com/Maksym-Gorbunov/mg-webapplication" target="_blank"><i
                     class="fab fa-github"></i></a></p>
+
+            <p>Heroku: <a href="https://mg-webapplication.herokuapp.com/" target="_blank">
+                <i class="fal fa-clouds"></i>
+            </a></p>
+
         </div>
     </div>
 

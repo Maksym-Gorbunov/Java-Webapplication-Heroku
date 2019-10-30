@@ -4,14 +4,17 @@
 * Java
 * Heroku
 * Tomcat 8.5
-* jsp
-* jstl
-* sQlite 3
-* Html/Css/JS
-* Bootstap 3.4
+* jsp / JSTL
+* SQLite 3
+* Html5 / Css3
+* JS / jQuery
+* Bootstrap 3.4
 * Dependency Injection
 * Mockito / JUnit Test
 
+for sqlite3 change 1 row in Models constructor:
+"this.db = new FakeCarsDBHelper()" to "this.db = db";
+current version data in memory, because heroku does't support filesystem     
 
 
 ![](info/login.jpg)
